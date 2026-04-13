@@ -1,0 +1,40 @@
+﻿---
+ID: "e1637853-707e-4c40-bf45-ae162544ca38"
+Parent: "ff9a4cba-60d4-4083-85b3-5d980d2f3049"
+Template: "ff9a4cba-60d4-4083-85b3-5d980d2f3049"
+Path: "/sitecore/templates/Project/harness-engineering/Page Design Folder/__Standard Values"
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {FF9A4CBA-60D4-4083-85B3-5D980D2F3049}
+    {1105B8F8-1E00-426B-BF1F-C840742D827B}
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "0a6d17a4-bc00-45bd-8674-6e7a2525ff2c"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20260413T044259Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\rob.earlam@sitecore.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\rob.earlam@sitecore.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "126ae83c-bd15-4e73-8736-6e1a7074af45"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\rob.earlam@sitecore.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260413T044305Z

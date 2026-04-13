@@ -1,0 +1,44 @@
+﻿---
+ID: "2544b9a6-a961-4e73-b420-4f7409590cd3"
+Parent: "2bc7b966-7e7f-41d8-87f1-4b5d586ac13c"
+Template: "76da0a8d-fc7e-42b2-af1e-205b49e43f98"
+Path: "/sitecore/content/harness-engineering/harness-engineering/Presentation/Available Renderings/FEaaS"
+BranchID: "50b59b25-cc93-4ffc-9a9d-d9e6ba101096"
+SharedFields:
+- ID: "715ae6c0-71c8-4744-ab4f-65362d20ad65"
+  Hint: Renderings
+  Value: |
+    {CAA0C742-F052-49FB-825B-A03494798DB7}
+    {DDC43BE7-D77A-4CE3-9282-03DD036EEC6D}
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "2777a74b-d3d4-43ad-9fd0-11ab315ae90b"
+- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
+  Hint: __Originator
+  Value: "{A6C669A1-05D3-4ABF-AC2F-4505CD948F9F}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20260413T044341Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\rob.earlam@sitecore.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\rob.earlam@sitecore.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "67d9ac71-267b-425a-91b3-e28db5f48a3f"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\rob.earlam@sitecore.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260413T044341Z

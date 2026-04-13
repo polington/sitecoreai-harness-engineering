@@ -1,0 +1,33 @@
+{
+    "$schema": "../../.sitecore/schemas/ModuleFile.schema.json",
+    "namespace": "rea-harness-engineering",
+    "items": {
+        "includes": [
+            {
+                "name": "content",
+                "path": "/sitecore/content/harness-engineering",
+                "allowedPushOperations": "CreateUpdateAndDelete"
+            },
+            {
+                "name": "placeholder-settings",
+                "path": "/sitecore/layout/Placeholder Settings/Project/harness-engineering",
+                "allowedPushOperations": "CreateUpdateAndDelete"
+            },
+            {
+                "name": "renderings",
+                "path": "/sitecore/layout/Renderings/Project/harness-engineering",
+                "allowedPushOperations": "CreateUpdateAndDelete"
+            },
+            {
+                "name": "templates",
+                "path": "/sitecore/templates/Project/harness-engineering",
+                "allowedPushOperations": "CreateUpdateAndDelete"
+            },
+            {
+                "name": "media",
+                "path": "/sitecore/media library/Project/harness-engineering",
+                "allowedPushOperations": "CreateUpdateAndDelete"
+            }
+        ]
+    }
+}
