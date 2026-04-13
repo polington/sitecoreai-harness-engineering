@@ -17,7 +17,7 @@ Follow these standards and references:
 
 Use this template:
 
-- `harness/templates/run_report_template.md`
+- `harness/templates/run-report-template.md`
 
 Read the live execution state in:
 
@@ -57,12 +57,18 @@ Governance-controlled paths include:
 - `harness/templates/`
 - `.github/agents/`
 - `.cursor/rules/`
+- `.claude/commands/`
+- `.claude/settings.local.json`
 
 If governance metadata appears inconsistent, report it in the implementation summary and run report instead of changing it.
 
 Use the controlled validation loop defined by the Build role when command execution is available.
 
 The validation loop may run only the approved commands and must stay within the retry and scope limits defined in the role.
+
+For this repository, run existing application validation commands from:
+
+- `src/headapps/rob-harness-engineering`
 
 Operate only within the approved task scope.
 
