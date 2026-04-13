@@ -1,11 +1,11 @@
 ---
 name: content-sdk-component-variants
-description: Implements component variants: different renderings or data-driven variants of the same component type. Pages Router: register in .sitecore/component-map.ts; getComponentData resolves props. Use when one component has multiple presentations.
+description: Implements component variants: different renderings or data-driven variants of the same component type. App Router: register in component-map.ts or component-map.client.ts as appropriate. Use when one component has multiple presentations.
 ---
 
-# Content SDK Component Variants (Pages Router)
+# Content SDK Component Variants (App Router)
 
-One component definition can have multiple presentations or data-driven variants. Component props are resolved by **getComponentData(page.layout, context, components)**; keep registration and layout aligned.
+One component definition can have multiple presentations or data-driven variants. Keep registration and layout aligned. This app does not use getComponentData; layout/placeholder data comes from getPage.
 
 ## When to Use
 
@@ -15,14 +15,14 @@ One component definition can have multiple presentations or data-driven variants
 
 ## How to perform
 
-- Prefer one component that accepts variant/style via props and branches internally; or multiple map entries if the app uses one key per variant. Use layout/fields/params for variant; register in `.sitecore/component-map.ts`. getComponentData resolves props; align with existing app convention.
+- Prefer one component that accepts variant/style via props and branches internally; or multiple map entries if the app pattern uses one key per variant. Use layout/fields/params for variant; register in the correct component map (Server or Client). Align with existing app convention.
 
 ## Hard Rules
 
 - Prefer a single component registration that accepts variant/style data (e.g. params or fields) and branches internally, over multiple map entries for the same logical component unless the app pattern uses separate registrations per variant.
-- Use props (fields, params) from layout to decide variant; do not rely on global state or URL for variant selection when data comes from Sitecore. getComponentData passes the layout-driven props to the component.
-- Register in `.sitecore/component-map.ts` only. If the app uses one key per variant, register each; if one key with variant param, single registration. Follow existing app convention.
-- Keep the component map in sync with src/components/.
+- Use props (fields, params) from layout to decide variant; do not rely on global state or URL for variant selection when data comes from Sitecore.
+- Register in `.sitecore/component-map.ts` (Server) or `.sitecore/component-map.client.ts` (Client) as appropriate. If the app uses one key per variant, register each; if one key with variant param, single registration. Follow existing app convention.
+- Keep component maps in sync with src/components/.
 
 ## Stop Conditions
 
@@ -32,5 +32,5 @@ One component definition can have multiple presentations or data-driven variants
 
 ## References
 
-- [AGENTS.md](../../../AGENTS.md) and content-sdk-component-registration for the map.
+- [AGENTS.md](../../../AGENTS.md) and content-sdk-component-registration for maps.
 - [Official Content SDK docs](https://doc.sitecore.com/xmc/en/developers/content-sdk/sitecore-content-sdk-for-xm-cloud.html).

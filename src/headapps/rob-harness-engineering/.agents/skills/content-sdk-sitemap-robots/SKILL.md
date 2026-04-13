@@ -1,11 +1,11 @@
 ---
 name: content-sdk-sitemap-robots
-description: Sitemap and robots.txt for Pages Router: src/pages/api/sitemap.ts and src/pages/api/robots.ts with SitemapMiddleware(scClient, sites).getHandler() and RobotsMiddleware(scClient, sites).getHandler(). Rewrites in next.config.js. Use when configuring sitemap, robots.txt, or SEO.
+description: Sitemap and robots.txt for App Router: src/app/api/sitemap/route.ts and src/app/api/robots/route.ts with createSitemapRouteHandler and createRobotsRouteHandler. Rewrites in next.config.ts. Use when configuring sitemap, robots.txt, or SEO.
 ---
 
-# Content SDK Sitemap and Robots (Pages Router)
+# Content SDK Sitemap and Robots (App Router)
 
-Sitemap and robots.txt are served via **API routes** and rewrites. Use the SDK middleware getHandler pattern and sites from .sitecore/sites.json.
+Sitemap and robots.txt are served via **route handlers** and rewrites. Use the SDK route handler helpers and sites from .sitecore/sites.json.
 
 ## When to Use
 
@@ -15,14 +15,14 @@ Sitemap and robots.txt are served via **API routes** and rewrites. Use the SDK m
 
 ## How to perform
 
-- Sitemap: `src/pages/api/sitemap.ts` with `SitemapMiddleware(scClient, sites).getHandler()`; robots: `src/pages/api/robots.ts` with `RobotsMiddleware(scClient, sites).getHandler()`. Use sites from `.sitecore/sites.json`. Add rewrites in next.config.js for /sitemap*.xml and /robots.txt to these API routes.
+- Sitemap: `src/app/api/sitemap/route.ts` with `createSitemapRouteHandler({ client, sites })`; robots: `src/app/api/robots/route.ts` with `createRobotsRouteHandler({ client, sites })`. Use sites from `.sitecore/sites.json`. Add rewrites in `next.config.ts` for `/sitemap*.xml` and `/robots.txt` with `locale: false`. Set `dynamic = 'force-dynamic'` if needed.
 
 ## Hard Rules
 
-- **Sitemap:** `src/pages/api/sitemap.ts` — use `new SitemapMiddleware(scClient, sites).getHandler()`. Export the handler. Use `sites` from `.sitecore/sites.json`.
-- **Robots:** `src/pages/api/robots.ts` — use `new RobotsMiddleware(scClient, sites).getHandler()`. Same pattern.
-- **Rewrites:** In `next.config.js`, add rewrites for `/robots.txt` and `/sitemap*.xml` to the corresponding API routes (e.g. `/sitemap.xml` → `/api/sitemap`).
-- Use the same SitecoreClient instance (e.g. from `src/lib/sitecore-client.ts`) as the rest of the app; do not create a dedicated client for sitemap/robots.
+- **Sitemap:** `src/app/api/sitemap/route.ts` — use `createSitemapRouteHandler({ client, sites })`. Export `{ GET }`. Use `sites` from `.sitecore/sites.json`. Set `export const dynamic = 'force-dynamic'` if the handler relies on request.
+- **Robots:** `src/app/api/robots/route.ts` — use `createRobotsRouteHandler({ client, sites })`. Same pattern.
+- **Rewrites:** In `next.config.ts`, add rewrites for `/sitemap*.xml` and `/robots.txt` to these route handlers. Use `locale: false` so they are not localized.
+- Use the same SitecoreClient instance as the rest of the app; do not create a dedicated client for sitemap/robots.
 - Avoid hardcoding the site list; use .sitecore/sites.json.
 
 ## Stop Conditions

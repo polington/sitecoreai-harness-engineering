@@ -1,13 +1,13 @@
 ---
 name: content-sdk-troubleshoot-editing
-description: Troubleshoots XM Cloud editing, preview, and design library for Pages Router. Check context.preview, context.previewData, and editing API routes (config, render, feaas/render). Use when editing or preview does not behave as expected.
+description: Troubleshoots XM Cloud editing, preview, and design library for App Router. Check draftMode(), getPreview/getDesignLibraryData from searchParams, setRequestLocale, and component maps. Use when editing or preview does not behave as expected.
 ---
 
-# Content SDK Troubleshoot Editing (Pages Router)
+# Content SDK Troubleshoot Editing (App Router)
 
-This skill focuses on **diagnosing** editing, preview, and design library issues. For implementing editing-safe rendering (context.preview, getPreview/getDesignLibraryData, API routes), use the **content-sdk-editing-safe-rendering** skill; the two are complementary (implementation vs. troubleshooting).
+This skill focuses on **diagnosing** editing, preview, and design library issues. For implementing editing-safe rendering (draftMode, getPreview/getDesignLibraryData, API routes), use the **content-sdk-editing-safe-rendering** skill; the two are complementary (implementation vs. troubleshooting).
 
-Diagnose and fix editing, preview, and design library issues without breaking the single client or proxy order. This app uses **context.preview** and **context.previewData** in getStaticProps/getServerSideProps.
+Diagnose and fix editing, preview, and design library issues without breaking the single client or proxy order. This app uses **draftMode()** and **searchParams** for preview data.
 
 ## When to Use
 
@@ -17,15 +17,15 @@ Diagnose and fix editing, preview, and design library issues without breaking th
 
 ## How to perform
 
-- Confirm context.preview and context.previewData and correct path/locale (extractPath, context.locale). Verify editing API routes (config, render, feaas/render) are not rewritten (check proxy matcher) and component-map.ts includes the component. Check env (editingSecret, API config) and .env.example documentation.
+- Confirm `draftMode()` and searchParams-based getPreview/getDesignLibraryData; ensure `setRequestLocale` is called at the top of the page. Verify editing API routes are not rewritten (check proxy matcher) and both component maps include the component. Check env (editingSecret, API config) and .env.example documentation.
 
 ## Hard Rules
 
-- **Preview flow:** In [[...path]].tsx getStaticProps/getServerSideProps, use `context.preview` and `context.previewData`. When in preview, use `client.getPreview(context.previewData)` or `client.getDesignLibraryData(context.previewData)`. Ensure path and locale come from extractPath(context) and context.locale when not in preview.
-- Editing API routes: `src/pages/api/editing/config.ts` (EditingConfigMiddleware), `render.ts` (EditingRenderMiddleware), `feaas/render.ts` (FEAASRenderMiddleware) must be reachable and use the same component map (`.sitecore/component-map.ts`) and config as the app. Check proxy `config.matcher` so `/api` is excluded and not rewritten or blocked.
-- Check that the component map includes all components used in the layout; missing registration causes "component not found" in editor.
+- **Preview flow:** Use `draftMode()` in Server Components; when enabled, use `client.getPreview(editingParams)` or `client.getDesignLibraryData(editingParams)` from **searchParams**. Ensure site/locale are passed correctly (e.g. from route params or editingParams).
+- **next-intl:** Ensure `setRequestLocale(\`${site}_${locale}\`)` is called at the top of the page; missing setRequestLocale can cause locale or dictionary issues in editor.
+- Editing API routes (`src/app/api/editing/config/route.ts`, `editing/render/route.ts`) must be reachable and use the same component maps (component-map.ts and component-map.client.ts) and config as the app. Check matcher in proxy.ts so /api/editing is not rewritten or blocked.
+- Check that both component maps include all components used in the layout; missing registration causes "component not found" in editor.
 - Environment: editingSecret and API config must be set (in env); document in .env.example only. Do not log or commit secrets.
-- Common causes: wrong path/locale passed to getPreview/getDesignLibraryData, or component not registered in component-map.ts.
 
 ## Stop Conditions
 

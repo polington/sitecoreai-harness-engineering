@@ -1,16 +1,17 @@
-# Sitecore Content SDK Next.js Project - Windsurf AI Rules
+# Sitecore Content SDK Next.js App Router Project - Windsurf AI Rules
 
 ## Project Purpose and Tech Stack
 
-This is a **Sitecore Content SDK** application built with **Next.js** and **TypeScript**. The project follows Sitecore best practices for XM Cloud development and provides a modern, performant web application framework.
+This is a **Sitecore Content SDK** application built with **Next.js App Router** and **TypeScript**. The project follows Sitecore best practices for XM Cloud development and leverages the latest Next.js App Router features for improved performance and developer experience.
 
 ### Key Technologies
 
-- **Next.js** - React framework with SSR/SSG capabilities
+- **Next.js App Router** - React framework with Server Components and modern routing
 - **Sitecore Content SDK** - Official SDK for Sitecore XM Cloud integration
 - **TypeScript** - Type-safe JavaScript development
 - **Sitecore XM Cloud** - Headless CMS platform
-- **React** - Component-based UI library
+- **React Server Components** - Server-side rendering for better performance
+- **next-intl** - Internationalization support
 
 ## Coding Standards
 
@@ -29,14 +30,14 @@ This is a **Sitecore Content SDK** application built with **Next.js** and **Type
 - **Directories**: kebab-case (`src/components`, `src/api-clients`)
 - **Types/Interfaces**: PascalCase (`ContentItem`, `LayoutProps`, `SitecoreConfig`)
 
-### Modular Layout
+### Modular Layout (App Router)
 
 ```
 src/
+  app/                 # App Router pages and layouts
   components/          # UI components (React)
   lib/                 # Configuration and utilities
-  pages/               # Next.js pages
-  assets/              # Static assets and styles
+  i18n/                # Internationalization setup
   types/               # TypeScript type definitions
   hooks/               # Custom React hooks
 ```
@@ -59,13 +60,13 @@ const client = new SitecoreClient({
 });
 ```
 
-### React Patterns
+### React App Router Patterns
 
-- Use **Server Components** for data fetching and static content
-- Use **Client Components** for interactivity (use 'use client')
-- Implement proper error boundaries
-- Use React.memo for expensive components
-- Leverage useCallback and useMemo for performance optimization
+- Use **Server Components** for data fetching and static content (default)
+- Use **Client Components** for interactivity (use 'use client' directive)
+- Implement proper error boundaries with error.tsx
+- Use loading.tsx for loading states
+- Leverage layout.tsx for shared page structure
 
 ### Sitecore Field Components
 
@@ -84,6 +85,59 @@ const client = new SitecoreClient({
 ```
 
 ## Example Patterns and Prompts
+
+### Server Component Development
+
+```typescript
+// Server Component example (default in App Router)
+import { SitecoreClient } from '@sitecore-content-sdk/nextjs/client';
+import scConfig from 'sitecore.config';
+
+const client = new SitecoreClient({
+  ...scConfig,
+});
+
+export default async function SitecorePage({ params }: { params: { path: string[] } }) {
+  try {
+    const pageData = await client.getPage(params.path.join('/'));
+    return <SitecoreLayout layoutData={pageData?.layout} />;
+  } catch (error) {
+    return <div>Content not found</div>;
+  }
+}
+```
+
+### Client Component Integration
+
+Interactive Sitecore Components:
+
+- Use 'use client' directive when needed
+- Keep client components focused on interactivity
+- Pass server-fetched data as props
+- Handle hydration mismatches carefully
+
+```typescript
+'use client';
+
+interface InteractiveSitecoreComponentProps {
+  fields: {
+    title: Field;
+    content: Field;
+  };
+}
+
+export default function InteractiveSitecoreComponent({
+  fields,
+}: InteractiveSitecoreComponentProps) {
+  // Client-side interactivity here
+  return (
+    <div>
+      <Text field={fields?.title} tag="h2" />
+      <RichText field={fields?.content} />
+    </div>
+  );
+}
+```
 
 ### Component Development
 
@@ -109,6 +163,12 @@ export default function Hero({ fields }: HeroProps) {
 ```
 
 ### Error Handling
+
+API Calls:
+
+- Always wrap in try/catch blocks
+- Throw custom errors with context: `SitecoreFetchError`, `ConfigurationError`
+- Handle edge cases with guard clauses
 
 ```typescript
 async function fetchPageData(path: string): Promise<Page | null> {
@@ -152,12 +212,55 @@ export default defineConfig({
 });
 ```
 
+### Internationalization
+
+Multi-language Support:
+
+- Configure next-intl for language routing
+- Handle Sitecore language contexts
+- Implement language switching
+- Use proper locale-based data fetching
+
+```typescript
+// Language-aware data fetching
+import { getTranslations } from 'next-intl/server';
+
+export default async function LocalizedPage() {
+  const t = await getTranslations('common');
+  // Fetch Sitecore content for current locale
+}
+```
+
 ## Development Workflow
 
 1. **Install dependencies**: `npm install`
 2. **Configure environment**: Copy `.env.example` to `.env.local`
 3. **Start development**: `npm run dev`
 4. **Build for production**: `npm run build`
+
+## App Router Best Practices
+
+### Server vs Client Components
+
+- Use Server Components for Sitecore content rendering (default)
+- Use Client Components for user interactions
+- Minimize client-side JavaScript
+- Leverage server-side data fetching
+
+### Routing and Layouts
+
+- Use layout.tsx for shared page structure
+- Implement loading.tsx for loading states
+- Create error.tsx for error boundaries
+- Use page.tsx for route content
+- Use [...path] for Sitecore catch-all routes
+
+### Performance Optimization
+
+- Leverage Server Components for better performance
+- Use streaming for improved loading experience
+- Implement proper caching strategies
+- Optimize images with Next.js Image component
 
 ## Best Practices
 
@@ -168,6 +271,7 @@ export default defineConfig({
 - Cache expensive operations appropriately
 - Consider server-side rendering implications
 - Lazy-load non-critical modules
+- Use Server Components for better performance
 
 ### Security
 

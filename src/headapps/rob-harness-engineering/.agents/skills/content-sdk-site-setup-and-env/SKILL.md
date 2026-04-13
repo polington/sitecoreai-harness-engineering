@@ -3,7 +3,7 @@ name: content-sdk-site-setup-and-env
 description: Configures site and environment: sitecore.config.ts, environment variables, default site and language. Use when configuring the app or adding env vars. Document in .env.example only; never commit .env or .env.local.
 ---
 
-# Content SDK Site Setup and Environment (Pages Router)
+# Content SDK Site Setup and Environment (App Router)
 
 Central config in sitecore.config.ts; all secrets and environment-specific values via env vars.
 

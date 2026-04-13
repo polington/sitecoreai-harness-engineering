@@ -75,7 +75,6 @@ Performance:
 - Consider memory usage and cleanup
 
 Referenced:
+@src/app/
 @src/components/
 @src/lib/
-@package.json
-

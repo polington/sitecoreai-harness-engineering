@@ -3,7 +3,7 @@ name: content-sdk-upgrade-assistant
 description: Guides upgrading @sitecore-content-sdk/* packages: version bumps, breaking changes, migration steps. Use when moving to a newer SDK or package version. Check Content SDK repo CHANGELOG and upgrade guides.
 ---
 
-# Content SDK Upgrade Assistant (Pages Router)
+# Content SDK Upgrade Assistant (App Router)
 
 Upgrade @sitecore-content-sdk/* packages safely; follow the Content SDK repo changelog and migration guides.
 
