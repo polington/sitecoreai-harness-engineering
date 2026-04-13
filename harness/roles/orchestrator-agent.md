@@ -124,7 +124,7 @@ This role requires:
 
 - a valid task file in `harness/tasks/`
 - `harness/templates/run-state-template.md`
-- `harness/templates/run_report_template.md`
+- `harness/templates/run-report-template.md`
 - `harness/standards/run-state-standard.md`
 - `harness/standards/task-lifecycle.md`
 - `harness/standards/feature-workflow.md`
@@ -143,7 +143,7 @@ Before orchestrating a task, this role should review:
 - `harness/standards/run-id-standard.md`
 - `harness/standards/stage-input-contracts.md`
 - `harness/templates/run-state-template.md`
-- `harness/templates/run_report_template.md`
+- `harness/templates/run-report-template.md`
 
 These references define how workflow state is initialized, advanced, stopped, recorded, and bounded by stage.
 

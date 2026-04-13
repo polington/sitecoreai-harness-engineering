@@ -144,7 +144,7 @@ Cover:
 This section should explicitly state the current evidence available for:
 
 - lint
-- typecheck
+- typecheck / build compile validation
 - unit/integration tests
 - end-to-end tests
 

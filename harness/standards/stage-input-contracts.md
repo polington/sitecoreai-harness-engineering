@@ -133,7 +133,7 @@ If the required input set is insufficient, the correct behavior is to escalate, 
 - approved active design note
 - approved active implementation plan
 - `harness/roles/build-agent.md`
-- `harness/templates/run_report_template.md`
+- `harness/templates/run-report-template.md`
 - `harness/standards/feature-workflow.md`
 - `harness/standards/task-lifecycle.md`
 - `harness/standards/run-id-standard.md`

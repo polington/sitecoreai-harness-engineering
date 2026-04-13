@@ -78,7 +78,7 @@ Before making changes, this role should review:
 - `harness/standards/feature-workflow.md`
 - `harness/standards/task-lifecycle.md`
 - `harness/standards/run-id-standard.md`
-- `harness/templates/run_report_template.md`
+- `harness/templates/run-report-template.md`
 
 These standards and templates define expectations for implementation quality, workflow boundaries, run naming, validation loop behavior, and durable build evidence recording.
 
@@ -108,14 +108,18 @@ This role may run a controlled validation loop during implementation.
 
 ### Allowed Validation Commands
 
-When available in the runtime environment, the Build Agent may run:
+When available in the runtime environment, the Build Agent may run the existing package-manager scripts defined by the active application workspace.
 
-- `pnpm lint`
-- `pnpm typecheck`
-- `pnpm test`
-- `pnpm test:e2e`
+For this repository, the active workspace is:
 
-These commands must be run from the application workspace (`src/`) unless project structure requires otherwise.
+- `src/headapps/rob-harness-engineering`
+
+Preferred validation commands for this workspace are:
+
+- `npm run lint`
+- `npm run build`
+
+If additional project-defined automated test scripts exist and are relevant to the active task, they may also be run. Do not invent new validation commands or assume `pnpm`-based scripts exist.
 
 ### Allowed Fix Scope
 
@@ -179,6 +183,12 @@ Follow this process when implementing a feature:
 - If canonical paths are defined, do not introduce alternative structures.
 - Do not introduce new architectural folders for organisational preference.
 
+9b. Preserve the existing Sitecore Content SDK delivery model unless the task explicitly changes it.
+
+- Keep the existing route, layout, and placeholder composition flow intact.
+- Reuse the shared Sitecore client and current configuration model.
+- If component registration changes are needed, use the existing `sitecore-tools` generation flow instead of creating a parallel manual mapping system.
+
 10. Add or update tests as defined in the implementation plan.
 
 11. Run the allowed validation commands where the runtime environment supports command execution.
@@ -204,7 +214,7 @@ Follow this process when implementing a feature:
 
 16. Prepare a concise build-stage summary for the user.
 
-17. Do not implement custom parsers for standard content formats such as Markdown when a suitable project-compatible library can satisfy the requirement more safely and with less complexity.
+17. Do not bypass the existing Sitecore route, data, and rendering pipeline with ad hoc shortcuts such as a second Sitecore client, hard-coded route composition, or manual replacement for the current component-map workflow.
 
 ---
 
@@ -250,6 +260,7 @@ A successful build run should:
 - remain clearly distinct from QA and task control responsibilities
 - use the validation loop responsibly and stop when blocked
 - leave durable validation evidence in the run report for downstream QA
+- preserve the intended Sitecore-authored rendering behavior of the application
 
 The implementation should remain simple and avoid unnecessary complexity.
 

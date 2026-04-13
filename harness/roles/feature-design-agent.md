@@ -121,6 +121,8 @@ Follow this process when producing a design note:
 
 9. Define the feature’s structure, content regions, and interaction expectations.
 
+9a. When the feature is rendered through Sitecore-authored layout data, describe the intended placeholder or content-region behavior at the design level without turning the note into implementation instructions.
+
 10. Define responsive behavior and accessibility considerations.
 
 11. Recommend reusable component roles and UI patterns only at the level needed for implementation planning.
@@ -144,6 +146,7 @@ The output must include:
 - design intent
 - lifecycle check
 - page or feature structure
+- authored content and placeholder structure where relevant
 - section breakdown
 - component recommendations
 - responsive behavior

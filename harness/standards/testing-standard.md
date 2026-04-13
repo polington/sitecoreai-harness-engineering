@@ -25,7 +25,7 @@ Testing should prioritize:
 Used for:
 
 - utility functions
-- content parsing
+- component prop shaping
 - data transformation
 - validation logic
 
@@ -39,6 +39,8 @@ Used for:
 
 - multi-component flows
 - content loading pipelines
+- Sitecore route and layout resolution
+- placeholder and component rendering flows
 - route-level logic
 
 ---
@@ -54,7 +56,8 @@ Examples:
 
 - homepage loads
 - navigation works
-- contact page loads
+- an authored Sitecore route resolves and renders
+- the not-found or error route renders the expected fallback
 
 ---
 

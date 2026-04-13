@@ -39,8 +39,8 @@ The detailed rules are defined in `harness/standards/feature-workflow.md`.
 
 ### `harness/tasks/`
 Durable task definitions (one file per task), such as:
-- `T001-global-layout.md`
-- `T008-speaking-engagements.md`
+- `T001-site-header.md`
+- `T008-content-promo-banner.md`
 
 Use these as the canonical task records.
 

@@ -2,18 +2,17 @@
 
 ## Purpose
 
-This document defines the visual design system used across the personal site.
+This document defines the visual design system used across the application.
 
 The goal of this design system is to create a visual language that is:
 
 - clean
 - professional
-- calm
 - readable
 - modern
 - consistent
 
-The site is **content-first**, meaning the visual system should support clarity and readability rather than decorative complexity.
+The application is **content-driven**, meaning the visual system should support authored content, readable page composition, and reusable component patterns rather than decorative complexity.
 
 This document serves as the **source of truth for visual design decisions** across the project.
 
@@ -25,7 +24,7 @@ All feature designs should follow the rules defined here.
 
 ## Content First
 
-Content should always be the primary focus.
+Authored content should remain the primary focus of each route.
 
 Typography, spacing, and layout should make content easy to read and scan.
 
@@ -33,21 +32,21 @@ Avoid visual elements that distract from the content.
 
 ---
 
-## Editorial Design
+## Structured Composition
 
-The site follows a **typography-led editorial design approach**.
+The application follows a **route-composed, component-driven approach**.
 
-- layout supports reading, not application behaviour  
-- visual hierarchy is driven by typography and spacing  
-- components should feel lightweight and unobtrusive  
+- layout should support both authored content and application behavior  
+- visual hierarchy should be clear even when page sections are composed through placeholders  
+- components should remain lightweight, reusable, and predictable  
 
-Avoid “app-like” UI patterns where possible.
+Avoid feature-specific one-off layout rules that break consistency across authored pages.
 
 ---
 
 ## Visual Restraint
 
-The site should maintain a minimal, calm aesthetic.
+The application should maintain a minimal, calm aesthetic.
 
 Avoid:
 
@@ -83,7 +82,7 @@ Accessibility should be treated as a first-class design concern.
 
 # Colour System
 
-The visual identity uses a restrained palette built primarily on neutral tones, with a dark red used sparingly for emphasis.
+The visual identity should use a restrained palette built primarily on neutral tones, with accent colour used sparingly for emphasis.
 
 The palette is intentionally minimal to maintain a calm and professional tone.
 
@@ -91,11 +90,7 @@ The palette is intentionally minimal to maintain a calm and professional tone.
 
 ## Primary Colour
 
-Dark red brand colour.
-
-Hex value: #7A1C1C
-
-Used sparingly for:
+Use the application's primary brand or semantic accent colour sparingly for:
 
 - key accents  
 - active navigation states  
@@ -107,11 +102,7 @@ Primary colour should **not dominate the interface**.
 
 ## Secondary Colour
 
-Supporting red tone.
-
-Hex value: #B23A3A
-
-Used for:
+Use a supporting secondary tone for:
 
 - subtle hover states  
 - light emphasis  
@@ -122,11 +113,7 @@ Usage should remain minimal.
 
 ## Accent Colour
 
-Warm complementary accent.
-
-Hex value: #D97706
-
-Used sparingly for:
+Accent colours may be used for:
 
 - small highlights  
 - occasional emphasis  
@@ -137,13 +124,7 @@ Accent usage should be rare and intentional.
 
 ## Neutral Palette
 
-Neutrals provide the structural foundation of the UI.
-
-Background: #FFFFFF  
-Surface: #FFFFFF  
-Primary text: #1F1F1F  
-Secondary text: #6B6B6B  
-Borders / dividers: #E5E5E5  
+Neutrals should provide the structural foundation of the UI.
 
 Neutrals should dominate the interface.
 
@@ -153,32 +134,7 @@ Colour should never be the primary tool for creating hierarchy.
 
 ## Dark Mode Colour Palette
 
-The site supports a dark mode that is activated via a toggle in the site header and persists to `localStorage`. On first visit, the system `prefers-color-scheme` preference is respected.
-
-Dark mode uses a warm dark palette derived from the brand's dark red identity. It is not a pure black/white inversion.
-
-### Dark Mode Neutral Palette
-
-Background: #1F1616  
-Surface (cards, panels): #2A1E1E  
-Primary text: #FFFFFF  
-Secondary / metadata text: #C9BFBF  
-Borders / dividers: #4A3939  
-Muted surface: #352727  
-
-### Dark Mode Brand Colours
-
-| Colour | Light Mode | Dark Mode | Notes |
-|---|---|---|---|
-| Primary (brand red) | `#7A1C1C` | `#B23A3A` | Lightened for legibility on dark background |
-| Secondary | `#B23A3A` | `#7A1C1C` | Roles swap in dark mode |
-| Accent | `#D97706` | `#D97706` | Unchanged — amber works in both modes |
-
-### Implementation
-
-Dark mode colours are defined as CSS custom properties in `src/app/globals.css` under the `.dark` class selector. The Tailwind v4 `@custom-variant dark (&:is(.dark *))` variant activates when the `dark` class is present on any ancestor element (applied to `<html>`).
-
-All colour tokens are accessible via standard Tailwind semantic utility classes (`bg-background`, `text-foreground`, `bg-card`, `border-border`, etc.).
+If the application supports dark mode, it should use the same semantic design-token model as light mode rather than introducing unrelated one-off colors.
 
 ---
 
@@ -190,14 +146,7 @@ Typography is the **primary visual system driver**.
 
 ## Primary Font
 
-Primary UI font: Inter
-
-Reasons:
-
-- excellent readability  
-- widely used in modern UI  
-- strong browser support  
-- performs well across sizes  
+Primary UI fonts should come from the application's chosen typography stack.
 
 ---
 
@@ -287,16 +236,12 @@ Page
 
 ## Container Width
 
-Maximum content width:
-
-- `max-w-3xl` to `max-w-4xl`
-
 Guidelines:
 
 - prioritise readable line length  
-- avoid wide, application-style layouts  
-- keep content centered  
+- keep content centered unless a broader application layout is intentional  
 - allow breathing room via padding  
+- ensure placeholder-based layouts still feel coherent when authored content varies in length  
 
 ---
 
@@ -308,19 +253,15 @@ Typical structure:
 - Main Content  
 - Footer  
 
+Where the application uses Sitecore-authored placeholders, these regions should remain visually coherent whether they are populated by authored components or fallback content.
+
 Content should be structured into clearly defined sections using spacing.
 
 ---
 
 # Section Patterns
 
-Most pages follow predictable section patterns:
-
-- Hero Section  
-- Content Section  
-- Content Section  
-- Call to Action  
-- Footer  
+Most pages should follow predictable section patterns, but must also tolerate variation introduced by authored component composition.
 
 Sections should be separated primarily by spacing, not heavy visual elements.
 
@@ -341,13 +282,13 @@ Guidelines:
 
 ## Use of Component Libraries
 
-Libraries such as shadcn/ui may be used as implementation primitives, but:
+Component libraries or SDK primitives may be used as implementation building blocks, but:
 
-- they must not define the visual system  
+- they must not define the visual system by themselves  
 - unnecessary components should not be imported  
 - generated UI should not be copied wholesale  
 
-All components must conform to this design system.
+All components must conform to this design system and to the application's authored-layout model.
 
 ---
 
@@ -358,7 +299,7 @@ All components must conform to this design system.
 - footer  
 - section wrappers  
 - typography blocks  
-- blog list / content previews  
+- authored content sections and placeholder-friendly wrappers  
 - minimal buttons  
 - simple form inputs  
 
@@ -377,13 +318,13 @@ Guidelines:
 - consistent placement  
 - calm visual presentation  
 
-Avoid complex navigation patterns.
+Avoid complex navigation patterns that conflict with Sitecore-authored information architecture.
 
 ---
 
 # Responsive Design
 
-The site must work cleanly across:
+The application must work cleanly across:
 
 - mobile  
 - tablet  
@@ -458,4 +399,4 @@ Feature designs must:
 - follow spacing and typography rules  
 - avoid introducing new visual systems  
 
-The goal is a cohesive, unified UI across the entire site.
+The goal is a cohesive, unified UI across the entire application.

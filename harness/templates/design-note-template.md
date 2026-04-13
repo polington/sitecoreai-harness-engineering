@@ -60,6 +60,7 @@ Examples may include:
 
 - heading region
 - intro region
+- authored placeholder region
 - content sections
 - feature-specific groupings
 - footer behavior if relevant to the page

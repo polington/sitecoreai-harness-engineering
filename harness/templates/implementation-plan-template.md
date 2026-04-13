@@ -30,7 +30,7 @@ Reference the approved design note artifact.
 
 Task ID: {{TASK_ID}}
 Run State: harness/run-state.md
-Current Stage: Build
+Current Stage: Implementation Planning
 Proceeding Validly: {{VALIDITY}}
 
 Brief note:
@@ -38,9 +38,9 @@ Brief note:
 
 Confirm that:
 
-- the active task pointer exists
-- the active task pointer references this task
-- the task lifecycle stage allows design work to proceed
+- the run-state exists
+- the run-state references this task
+- the task lifecycle stage allows implementation planning to proceed
 
 ---
 
@@ -99,9 +99,11 @@ Prefer describing likely areas of change over exhaustive file-by-file specificit
 
 Examples:
 
-- `src/app/layout.tsx`
+- `src/app/[site]/[locale]/[[...path]]/page.tsx`
+- `src/Layout.tsx`
 - `src/components/...`
-- `src/app/...`
+- `src/lib/sitecore-client.ts`
+- `sitecore.config.ts`
 
 ---
 
@@ -123,10 +125,10 @@ Describe tests that should be written or updated.
 
 Examples:
 
-- verify shared layout renders on all routed pages
-- verify navigation is present and keyboard reachable
-- verify footer renders correctly
-- verify no horizontal overflow at supported viewport sizes
+- verify the relevant route resolves for the correct site and locale context
+- verify authored content renders in the expected placeholder or content region
+- verify component behavior remains accessible and keyboard reachable where applicable
+- verify lint and build validation cover the changed delivery path
 
 The test plan should align with the acceptance criteria and implementation slices.
 

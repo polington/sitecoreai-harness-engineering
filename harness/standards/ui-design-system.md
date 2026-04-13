@@ -14,6 +14,8 @@ The design system should make the site feel:
 - consistent
 - content-focused
 
+The system should remain compatible with content-authored page composition and reusable rendering patterns.
+
 ---
 
 ## Design Principles
@@ -98,13 +100,13 @@ Guidelines:
 
 ## Component Usage
 
-This project uses **shadcn/ui** as the base component layer.
+This project may use shared UI primitives and Sitecore-rendered components together.
 
 Guidelines:
 
-- prefer existing primitives where possible
-- wrap primitives when reusable patterns emerge
-- avoid inventing custom components when a standard primitive works
+- prefer existing primitives and established rendering patterns where possible
+- keep components compatible with authored layout composition and placeholder rendering
+- avoid inventing a second visual system for one feature
 
 ---
 

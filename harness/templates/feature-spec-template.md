@@ -62,9 +62,9 @@ Prefer verifiable outcomes over subjective wording.
 
 Stronger examples:
 
-- A shared root layout wraps all pages under the main app route tree.
-- Header navigation is visible on all pages using the shared layout.
-- The layout uses the standard centered content container defined by the design system.
+- The feature renders through the existing route and layout pipeline for the application.
+- New authored content is displayed in the intended placeholder or content region without bypassing the current composition model.
+- The feature behaves correctly for the relevant site and locale context.
 
 Avoid vague examples such as:
 

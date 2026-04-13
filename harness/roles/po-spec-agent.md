@@ -148,6 +148,12 @@ The output must include the artifact metadata defined by the template, including
 
 Acceptance criteria must be written so they can be clearly validated by a human reviewer or QA agent.
 
+Where relevant to the task, acceptance criteria should make it clear whether behavior is driven by:
+
+- Sitecore-authored route or layout data
+- placeholder or component-map based composition
+- application-owned logic or UI behavior
+
 The specification should be written to the canonical feature specification path defined by the task file and/or run-state.
 
 ---

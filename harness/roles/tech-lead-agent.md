@@ -94,9 +94,10 @@ Follow this process when producing an implementation plan:
 
 8a. Preserve the existing repository architecture unless the task explicitly requires a new top-level structure.
 
-8b. When defining the implementation approach, prefer established libraries over handwritten parsers for common concerns such as Markdown parsing, frontmatter handling, and content transformation, unless the task explicitly requires a custom implementation.
+8b. When defining the implementation approach, preserve the existing Sitecore Content SDK application structure where relevant.
 
-- Do not introduce new top-level source folders such as `features/` if the task defines canonical placement inside existing directories like `components/`, `lib/`, or `data`.
+- Do not bypass the existing route, layout, placeholder, or Sitecore client flow with parallel delivery mechanisms.
+- Do not introduce new top-level source folders such as `features/` if the task defines canonical placement inside existing directories like `components/`, `lib/`, `app/`, or `i18n`.
 - Treat task-defined canonical paths as binding implementation constraints, not suggestions.
 
 9. Break the implementation into small, reviewable slices.
