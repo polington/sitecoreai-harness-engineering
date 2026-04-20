@@ -107,6 +107,32 @@ Examples:
 
 ---
 
+## CMS Prerequisites
+
+List any Sitecore CMS items that must exist before the rendering host implementation can function end-to-end.
+
+These items are created manually in XM Cloud and serialized back into the repository using `dotnet sitecore ser pull`.
+
+If no CMS prerequisites are needed for this task, state "None" and remove the examples.
+
+Examples:
+
+- rendering item at `/sitecore/layout/Renderings/Project/harness-engineering/{{COMPONENT_NAME}}`
+- data source template with fields at `/sitecore/templates/Project/harness-engineering/{{TEMPLATE_NAME}}`
+- placeholder setting update to allow the rendering in the target placeholder
+- page item or content structure under `/sitecore/content/harness-engineering`
+
+For each prerequisite, note:
+
+- the item type (rendering, template, placeholder setting, content item)
+- the expected path
+- required fields or configuration
+- whether it blocks local development or only blocks E2E validation against a live instance
+
+CMS prerequisites are human-performed. The Build agent should not attempt to author serialization YAML for these items unless explicitly instructed.
+
+---
+
 ## Implementation Steps
 
 Describe the sequence of work required to implement the feature.

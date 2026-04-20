@@ -12,6 +12,22 @@ It provides:
 
 In short: this is how work gets from idea to approved implementation.
 
+## Project Context
+
+This repository is a **Sitecore Content SDK** application built with **Next.js App Router**.
+
+The active application workspace is:
+
+```
+src/headapps/rob-harness-engineering
+```
+
+Source paths referenced in harness standards and templates (such as `src/app/`, `src/components/`, `src/lib/`) are relative to this workspace.
+
+Build and validation commands should be run from this workspace directory.
+
+Project-specific technical guidance (technology stack, route shape, Sitecore delivery model, coding conventions) is defined in `harness/standards/coding-standard.md`.
+
 ## Why It Exists
 The harness is optimized for reliable AI-assisted development:
 - small, scoped increments instead of big-bang changes
@@ -170,7 +186,10 @@ During normal feature execution:
 5. Update run log and progress to next stage if gates pass.
 
 ## Related Docs
-- `AGENTS.md` (Cursor: project rules mirroring `.github/agents/`)
+- `.github/agents/` — GitHub Copilot agent dispatch files
+- `.cursor/rules/` — Cursor agent dispatch files (repo root mirrors `.github/agents/`)
+- `.claude/commands/` — Claude Code command dispatch files
+- `src/headapps/rob-harness-engineering/AGENTS.md` — Sitecore Content SDK application guidance
 - `harness/standards/feature-workflow.md`
 - `harness/standards/task-lifecycle.md`
 - `harness/standards/stage-input-contracts.md`
