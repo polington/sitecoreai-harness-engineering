@@ -67,6 +67,7 @@ Use one of the following stage codes:
 - `PLAN` — Implementation Plan
 - `BUILD` — Build / implementation summary if used as a standalone artifact
 - `QA` — QA Review
+- `CMS` — CMS Configuration Guide
 
 ---
 

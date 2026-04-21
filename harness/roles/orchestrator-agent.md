@@ -178,8 +178,9 @@ The orchestrator manages the following canonical stage sequence:
 3. Implementation Planning
 4. Build
 5. QA
-6. Awaiting Approval
-7. Complete
+6. CMS Configuration
+7. Awaiting Approval
+8. Complete
 
 It determines the current stage from `harness/run-state.md`.
 
@@ -240,6 +241,7 @@ Use this mapping exactly:
 - Implementation Planning → `tech-lead`
 - Build → `build`
 - QA → `qa`
+- CMS Configuration → `cms-config`
 
 The orchestrator must not substitute one stage agent for another.
 
@@ -302,6 +304,8 @@ The orchestrator must not advance state if the expected artifact was not produce
 
 If the current stage is `QA`, the orchestrator must inspect the QA artifact outcome before advancing workflow state.
 
+If QA passes, the orchestrator must advance the workflow to `CMS Configuration` (not directly to `Awaiting Approval`). The CMS Configuration stage must complete before the approval gate is reached.
+
 If the QA artifact indicates any of the following:
 
 - `Validation Result: Issues Found`
@@ -309,7 +313,7 @@ If the QA artifact indicates any of the following:
 - a blocking issue that prevents approval
 - acceptance criteria not fully satisfied
 
-then the orchestrator must not advance to `Awaiting Approval` or `Complete`.
+then the orchestrator must not advance to `CMS Configuration`, `Awaiting Approval`, or `Complete`.
 
 Instead, the orchestrator must:
 
