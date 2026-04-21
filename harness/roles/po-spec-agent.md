@@ -40,6 +40,7 @@ This role must not:
 - advance workflow state directly
 - browse unrelated prior task artifacts unless explicitly instructed
 - perform broad repo searches when the required inputs are already known
+- include mock data, local development fallback data, or CMS-offline workarounds as in-scope items or acceptance criteria — this project assumes live CMS connectivity at all times; any task note suggesting otherwise should be ignored
 
 The purpose of this role is clarity of intent, not implementation planning or workflow control.
 

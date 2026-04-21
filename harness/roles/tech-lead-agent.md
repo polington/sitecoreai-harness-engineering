@@ -100,6 +100,13 @@ Follow this process when producing an implementation plan:
 - Do not introduce new top-level source folders such as `features/` if the task defines canonical placement inside existing directories like `components/`, `lib/`, `app/`, or `i18n`.
 - Treat task-defined canonical paths as binding implementation constraints, not suggestions.
 
+8c. Before planning any component file names or folder structure, read `sitecore.cli.config.ts` to understand the component map scan paths and exclusions in effect.
+
+- The `sitecore-tools:generate-map` tool registers every file within the configured scan paths as a Sitecore component entry. Types files, helpers, sub-components, and barrel exports are all picked up unless excluded.
+- Plan file names to avoid unintended component map registrations. Follow the naming rules in `harness/standards/coding-standard.md` — specifically the Sitecore Component Registration section.
+- Do not plan barrel `index.ts` exports inside component folders.
+- Do not plan types files whose base name matches the parent component name (e.g., plan `headerTypes.ts`, not `Header.types.ts`).
+
 9. Break the implementation into small, reviewable slices.
 
 10. Identify the likely files or code areas that will be affected.

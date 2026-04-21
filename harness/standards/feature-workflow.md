@@ -29,6 +29,7 @@ Stages are:
 - Implementation Planning
 - Build
 - QA
+- CMS Configuration
 - Awaiting Approval
 - Complete
 
@@ -49,6 +50,7 @@ Expected progression:
 - Implementation Planning produces an Implementation Plan
 - Build produces code changes, tests, and a Build Run Report
 - QA produces a QA Review
+- CMS Configuration produces a CMS Configuration Guide
 
 This ensures that every stage works from explicit documented inputs rather than relying on memory or unstated assumptions.
 
@@ -254,7 +256,29 @@ Output:
 
 If QA finds blocking issues, the workflow returns to Build.
 
-If QA passes, the workflow moves to Awaiting Approval.
+If QA passes, the workflow moves to CMS Configuration.
+
+---
+
+## 5.5. CMS Configuration
+
+Purpose:
+
+Produce a human-executable guide detailing every Sitecore item, template, placeholder setting, and serialization step required to support the implemented component in XM Cloud.
+
+Inputs:
+
+- feature specification
+- implementation plan
+- implemented component source files
+- run-state
+- CMS config template
+
+Output:
+
+- `harness/artifacts/cms-config/TASKID-cms-config.md`
+
+The workflow moves to Awaiting Approval after the CMS Configuration Guide is produced.
 
 ---
 

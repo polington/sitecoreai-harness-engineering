@@ -180,6 +180,31 @@ If the required input set is insufficient, the correct behavior is to escalate, 
 
 ---
 
+## CMS Configuration Stage Contract
+
+### Allowed Inputs
+
+- `harness/run-state.md`
+- active task file in `harness/tasks/`
+- approved active feature specification
+- approved active implementation plan
+- `harness/roles/cms-config-agent.md`
+- `harness/templates/cms-config-template.md`
+- `harness/standards/feature-workflow.md`
+- `harness/standards/task-lifecycle.md`
+- `harness/standards/run-id-standard.md`
+- the implemented component source files for the active task
+
+### Disallowed By Default
+
+- prior task CMS config guides
+- QA reviews
+- design notes
+- broad repo searches beyond the component source files
+- governance file editing
+
+---
+
 ## Enforcement Expectations
 
 The orchestrator should:
