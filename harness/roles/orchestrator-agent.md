@@ -447,6 +447,34 @@ The run report is the durable execution history for the task.
 
 ---
 
+## Validation Evidence Recording
+
+After each stage completes, the orchestrator must update the run report's Validation Evidence section with stage-appropriate evidence.
+
+### Per-Stage Evidence Requirements
+
+**Specification, Design, Implementation Planning, CMS Configuration:**
+
+- Artifact path and file size confirmation
+- Brief content summary (e.g., number of acceptance criteria, key decisions)
+
+**Build:**
+
+- The orchestrator captures the build agent's summary output and records:
+  - validation commands executed and their results
+  - test counts and pass/fail status
+  - lint and typecheck results
+  - pre-existing environment issues (if any)
+  - implementation summary (files created/modified)
+
+**QA:**
+
+- QA verdict (Pass / Pass With Minor Issues / Issues Found)
+- Number of issues identified and their severity
+- Approval readiness recommendation
+
+---
+
 ## Approval Gates
 
 The orchestrator must obey approval settings recorded in run-state.

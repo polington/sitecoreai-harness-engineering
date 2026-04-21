@@ -2,7 +2,7 @@
 name: orchestrator
 description: Initialize and coordinate the current task workflow by managing run-state, invoking the correct next stage subagent, enforcing stage input contracts, and stopping at approval gates.
 tools: ['edit/editFiles', 'search/codebase', 'search', 'agent']
-agents: ['po-spec', 'feature-design', 'tech-lead', 'build', 'qa']
+agents: ['po-spec', 'feature-design', 'tech-lead', 'build', 'qa', 'cms-config']
 ---
 
 Follow the role definition in:
@@ -52,6 +52,7 @@ Use this exact stage-to-agent mapping:
 - Implementation Planning → `tech-lead`
 - Build → `build`
 - QA → `qa`
+- CMS Configuration → `cms-config`
 
 Do not use one stage agent to perform another stage’s responsibility.
 

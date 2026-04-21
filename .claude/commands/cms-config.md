@@ -34,6 +34,10 @@ Write the CMS Configuration Guide to the canonical CMS config path for the activ
 
 - `harness/artifacts/cms-config/TASKID-cms-config.md`
 
+When writing your artifact to disk, use the `create` tool for new files that do not yet exist. Use the `edit` tool only for files that already exist. Do not assume `edit` can create new files — it cannot.
+
+Your primary deliverable is the artifact file on disk. Write the artifact first, then produce a brief summary response confirming what was written and where.
+
 Do not modify governance-controlled files or paths.
 
 Do not modify implementation files.

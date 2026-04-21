@@ -98,6 +98,7 @@ Expected stages are:
 - Implementation Planning
 - Build
 - QA
+- CMS Configuration
 - Awaiting Approval
 - Complete
 
@@ -197,6 +198,7 @@ Examples:
 - `RUN-2026-03-16-T002-PLAN`
 - `RUN-2026-03-16-T002-BUILD`
 - `RUN-2026-03-16-T002-QA`
+- `RUN-2026-03-16-T002-CMS`
 
 The current stage run ID should be stored in run state.
 

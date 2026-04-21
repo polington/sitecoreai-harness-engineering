@@ -33,18 +33,6 @@ Read the approved artifacts referenced by the task file and/or run-state before 
 
 Generate a stage-appropriate Build run ID using the run-id standard.
 
-Determine the canonical run report path from the task file and/or run-state.
-
-Create or update the run report with:
-
-- task metadata
-- current stage
-- current run ID
-- stage history entry for the Build stage
-- validation evidence
-- stop or pause state if relevant
-- notes relevant to QA handoff
-
 Do not modify governance-controlled files or paths as part of normal implementation work.
 
 Governance-controlled paths include:
@@ -60,7 +48,7 @@ Governance-controlled paths include:
 - `.claude/commands/`
 - `.claude/settings.local.json`
 
-If governance metadata appears inconsistent, report it in the implementation summary and run report instead of changing it.
+If governance metadata appears inconsistent, report it in the implementation summary and build report instead of changing it.
 
 Use the controlled validation loop defined by the Build role when command execution is available.
 
@@ -72,4 +60,10 @@ For this repository, run existing application validation commands from:
 
 Operate only within the approved task scope.
 
-Make implementation changes, required test changes, and the run report update, but do not continue beyond this stage without orchestration or human review.
+When writing new files to disk (component files, test files, config files), use the `create` tool for files that do not yet exist. Use the `edit` tool only for files that already exist. Do not assume `edit` can create new files — it cannot.
+
+Make implementation changes, required test changes, but do not continue beyond this stage without orchestration or human review.
+
+Do not write directly to the task run report in `harness/runs/`. The orchestrator is responsible for maintaining the run report.
+
+Your primary deliverable is the implemented code on disk. Write the implementation first, then produce a brief summary response including validation results, files changed, and any assumptions or blockers.

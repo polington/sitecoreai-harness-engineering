@@ -146,6 +146,16 @@ The lifecycle check must reference `harness/run-state.md` as the live workflow-s
 
 The implementation plan should be written to the canonical implementation-plan path defined by the task file and/or run-state.
 
+### Artifact-First Output Rule
+
+The primary deliverable of this role is the artifact file on disk. The agent must:
+
+1. Write the complete artifact to the canonical path first.
+2. Verify the file was created successfully.
+3. Then produce a brief summary response confirming what was written and where.
+
+The agent must not produce the artifact content only in its response text. The filesystem artifact is what counts — not narrated or summarized content in the response.
+
 ---
 
 ## Quality Bar

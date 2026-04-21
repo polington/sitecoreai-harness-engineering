@@ -89,6 +89,10 @@ QA review for T001:
 
 `RUN-2026-03-16-T001-QA`
 
+CMS Configuration Guide for T001:
+
+`RUN-2026-03-16-T001-CMS`
+
 ---
 
 ## Rules
@@ -97,6 +101,26 @@ QA review for T001:
 - A spec artifact must not use a design, plan, build, or QA stage code.
 - A plan artifact must not reuse a spec stage code.
 - If an artifact is regenerated, the same stage code should still be used unless the harness introduces explicit rerun numbering later.
+
+---
+
+## Run Report Naming
+
+Run report files use a task-based name without a date component:
+
+`TASKID-run-report.md`
+
+Example:
+
+`T001-run-report.md`
+
+The full path is:
+
+`harness/runs/TASKID-run-report.md`
+
+Run reports are not date-stamped because a single run report accumulates stage history across the entire task lifecycle. Using a date in the filename creates a mismatch if the run spans multiple days.
+
+The run report's internal fields (Run Report ID, stage run IDs) still use date-stamped run IDs for traceability.
 
 ---
 
