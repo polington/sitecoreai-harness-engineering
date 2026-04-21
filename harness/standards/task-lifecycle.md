@@ -27,8 +27,9 @@ A task moves through the following lifecycle stages:
 3. Implementation Planning
 4. Build
 5. QA
-6. Awaiting Approval
-7. Complete
+6. CMS Configuration
+7. Awaiting Approval
+8. Complete
 
 These stages represent the canonical workflow of the harness.
 
@@ -217,7 +218,38 @@ QA produces one of the following outcomes:
 
 If blocking issues are found, the lifecycle returns to **Build** for corrective work.
 
-If QA passes, the lifecycle moves to **Awaiting Approval**.
+If QA passes, the lifecycle moves to **CMS Configuration**.
+
+---
+
+## CMS Configuration
+
+Purpose:
+
+Produce a human-executable guide detailing every Sitecore item, template, placeholder setting, and serialization step required to support the implemented component in XM Cloud.
+
+Primary artifact:
+
+```
+CMS Configuration Guide
+```
+
+Expected output:
+
+```
+harness/artifacts/cms-config/TASKID-cms-config.md
+```
+
+The CMS Configuration Guide describes:
+
+- rendering definitions
+- data source templates and fields
+- placeholder setting updates
+- available renderings entries
+- content item creation steps
+- serialization and validation steps
+
+The next lifecycle stage after successful CMS Configuration is **Awaiting Approval**.
 
 ---
 
@@ -269,7 +301,7 @@ The run-state should record the final lifecycle stage as **Complete**.
 Lifecycle progression should follow the canonical stage order:
 
 ```
-Specification → Design → Implementation Planning → Build → QA → Awaiting Approval → Complete
+Specification → Design → Implementation Planning → Build → QA → CMS Configuration → Awaiting Approval → Complete
 ```
 
 Stages must not be skipped.
@@ -299,6 +331,7 @@ RUN-2026-03-16-T002-DESIGN
 RUN-2026-03-16-T002-PLAN
 RUN-2026-03-16-T002-BUILD
 RUN-2026-03-16-T002-QA
+RUN-2026-03-16-T002-CMS
 ```
 
 The run ID should be recorded in:

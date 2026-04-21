@@ -150,6 +150,11 @@ If the required input set is insufficient, the correct behavior is to escalate, 
 - governance file editing
 - unrelated codebase refactors
 
+### Expected Outputs
+
+- Implementation files in the codebase (as defined by the implementation plan)
+- Test files (as defined by the implementation plan and testing standard)
+
 ---
 
 ## QA Stage Contract
@@ -161,7 +166,7 @@ If the required input set is insufficient, the correct behavior is to escalate, 
 - approved active feature specification
 - approved active design note
 - approved active implementation plan
-- active task build run report
+- active task run report with build validation evidence
 - `harness/roles/qa-agent.md`
 - `harness/templates/qa-review-template.md`
 - `harness/standards/feature-workflow.md`

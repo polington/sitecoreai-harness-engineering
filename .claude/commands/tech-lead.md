@@ -30,4 +30,8 @@ Generate a stage-appropriate Implementation Planning run ID using the run-id sta
 
 Write the implementation plan to the canonical implementation-plan path defined by the task file and/or run-state.
 
+When writing your artifact to disk, use the `create` tool for new files that do not yet exist. Use the `edit` tool only for files that already exist. Do not assume `edit` can create new files — it cannot.
+
+Your primary deliverable is the artifact file on disk. Write the artifact first, then produce a brief summary response confirming what was written and where.
+
 Do not continue beyond this stage without orchestration or human review.

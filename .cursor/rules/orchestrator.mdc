@@ -50,6 +50,7 @@ Use this exact stage-to-agent mapping:
 - Implementation Planning → `tech-lead`
 - Build → `build`
 - QA → `qa`
+- CMS Configuration → `cms-config`
 
 Do not use one stage agent to perform another stage’s responsibility.
 

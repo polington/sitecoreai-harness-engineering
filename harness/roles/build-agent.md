@@ -26,6 +26,8 @@ This role is responsible for:
 - using the controlled validation loop to resolve obvious in-scope failures where allowed
 - creating or updating the task run report with build-stage outcomes and validation evidence
 
+The Build Agent should not write directly to the task run report in `harness/runs/`. The orchestrator is responsible for maintaining the run report. The Build Agent's output summary provides the information the orchestrator needs to update the run report.
+
 The implementation should align with the approved feature specification and design note.
 
 ---
@@ -80,7 +82,7 @@ Before making changes, this role should review:
 - `harness/standards/run-id-standard.md`
 - `harness/templates/run-report-template.md`
 
-These standards and templates define expectations for implementation quality, workflow boundaries, run naming, validation loop behavior, and durable build evidence recording.
+These standards and templates define expectations for implementation quality, workflow boundaries, run naming, and validation loop behavior.
 
 ---
 
@@ -98,7 +100,7 @@ The following paths are governance-controlled and must not be modified by this r
 
 This role may read these files when required, but must not edit them as part of normal feature implementation.
 
-The Build Agent may create or update the current task run report in `harness/runs/` because the run report is an execution artifact, not the authoritative workflow-state file.
+The Build Agent must not write directly to the task run report in `harness/runs/`. The run report is owned by the orchestrator.
 
 ---
 
@@ -195,9 +197,7 @@ Follow this process when implementing a feature:
 
 12. If validation fails, apply bounded in-scope fixes and rerun within the retry limit.
 
-13. Create or update the task run report at the canonical run report path defined by the task file and/or run-state.
-
-14. Record in the run report:
+13. Prepare a concise build-stage summary including:
     - task ID
     - task title
     - current stage
@@ -209,8 +209,9 @@ Follow this process when implementing a feature:
     - assumptions used
     - blockers or follow-up recommendations
     - governance observations, if any
+    - pre-existing environment issues, if any
 
-15. If governance metadata appears inconsistent, report it in the run report and implementation summary instead of editing control files.
+14. If governance metadata appears inconsistent, report it in the implementation summary instead of editing control files.
 
 16. Prepare a concise build-stage summary for the user.
 
@@ -231,13 +232,13 @@ The output of this role should include:
 - validation results observed
 - any assumptions made during implementation
 - any known limitations, blockers, or follow-up recommendations
-- confirmation that the run report was created or updated
+- pre-existing environment issues documented separately from task-caused failures
 
 The implementation should leave the task ready for later QA review.
 
-If governance inconsistencies were observed, they should be reported in the summary and run report rather than corrected by this role.
+If governance inconsistencies were observed, they should be reported in the summary rather than corrected by this role.
 
-If validation could not be run because the runtime environment lacked command execution, that must be stated explicitly in both the summary and the run report.
+If validation could not be run because the runtime environment lacked command execution, that must be stated explicitly in the summary.
 
 ---
 
@@ -259,14 +260,49 @@ A successful build run should:
 - avoid changing workflow governance
 - remain clearly distinct from QA and task control responsibilities
 - use the validation loop responsibly and stop when blocked
-- leave durable validation evidence in the run report for downstream QA
+- leave durable validation evidence in the build summary for downstream QA
 - preserve the intended Sitecore-authored rendering behavior of the application
 
 The implementation should remain simple and avoid unnecessary complexity.
 
 ---
 
-## Escalation Conditions
+## Pre-Existing Environment Failure Handling
+
+During validation, the Build Agent may encounter failures that are not caused by the current task's code changes. These are pre-existing environment failures.
+
+### Identification
+
+A failure is pre-existing if:
+
+- it exists before any task-related changes are made
+- it affects files, modules, or configurations outside the task scope
+- it would fail identically on the main branch without any task changes
+- it involves missing environment configuration (e.g., CMS API credentials, external service connections)
+
+### Required Response
+
+When a pre-existing failure is identified, the Build Agent must:
+
+1. document it clearly in the build summary under Pre-Existing Environment Issues
+2. explain why the failure is not caused by the task's changes
+3. confirm that the task's own code compiles, lints, and passes tests independently of the pre-existing failure
+4. continue with the build rather than treating the pre-existing failure as a blocking condition
+
+### What Counts as a Build Pass
+
+A build is considered successful if:
+
+- all task-specific validation passes (lint, typecheck, tests for the task's files)
+- any remaining failures are documented as pre-existing and unrelated
+
+A build is considered failing only if:
+
+- task-specific code introduces new errors
+- task-specific tests fail
+- the task's changes directly cause a previously passing check to fail
+
+---
 
 Escalate when:
 
