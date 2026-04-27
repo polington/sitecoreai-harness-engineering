@@ -1,7 +1,7 @@
 ---
 name: orchestrator
 description: Initialize and coordinate the current task workflow by managing run-state, invoking the correct next stage subagent, enforcing stage input contracts, and stopping at approval gates.
-tools: ['edit/editFiles', 'search/codebase', 'search', 'agent']
+tools: ['read', 'edit', 'search', 'agent']
 agents: ['po-spec', 'feature-design', 'tech-lead', 'build', 'qa', 'cms-config']
 ---
 

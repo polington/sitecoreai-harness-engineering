@@ -1,7 +1,7 @@
 ---
 name: tech-lead
 description: Produce an implementation plan for the active task defined in harness/run-state.md.
-tools: ['edit/editFiles', 'search/codebase', 'search']
+tools: ['read', 'edit', 'search']
 ---
 
 Follow the role definition in:

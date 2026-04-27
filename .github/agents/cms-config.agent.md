@@ -1,7 +1,7 @@
 ---
 name: cms-config
 description: Produce a CMS Configuration Guide for the active task defined in harness/run-state.md.
-tools: ['edit/editFiles', 'search/codebase', 'search']
+tools: ['read', 'edit', 'search']
 ---
 
 Follow the role definition in:

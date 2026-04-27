@@ -77,13 +77,25 @@ Follow this process when producing a CMS Configuration Guide:
    - the placeholder name the component is expected to occupy
    - any nested data structures (e.g., child link items) the component references
 
-6. Generate a stage-appropriate run ID for the CMS Configuration stage using the run-id standard.
+6. Read the serialization module file (`src/authoring/items/*.module.json` or equivalent) and determine which Sitecore paths are already covered by existing `includes` entries. For every CMS path required by this task:
+   - If already covered by an include: record it as covered in the guide — no human action required for that path.
+   - If **not** covered: add the missing include entry directly to the module JSON file, then record it as added in the guide. The agent must make this edit itself — do not ask the human to do it.
+
+7. Generate a stage-appropriate run ID for the CMS Configuration stage using the run-id standard.
 
 7. Produce the CMS Configuration Guide following the template structure.
 
-8. The guide must include all items listed in the template: rendering definition, data templates, placeholder settings, available renderings, content items, serialization, and post-setup validation.
+8. The guide must include all items listed in the template: the Clone Rendering script option, data templates, rendering definition, placeholder settings, available renderings, content items, serialization, and post-setup validation.
 
-9. Field names, template names, and component names must be taken directly from the implementation — do not invent or assume names not present in the source files.
+9. Section ordering must follow dependency order — items that are referenced by other items must appear first:
+   - Data templates must come before the rendering definition (the rendering references the template by path).
+   - When multiple templates exist, any template referenced by a Treelist/Multilist field in another template must be defined first (e.g., a NavItem template must precede a SiteHeader template that has a Treelist pointing to NavItem items).
+   - Content item folders and leaf items must be created before the parent data source item that references them in a Treelist or Multilist field.
+   - The rendering definition must come before placeholder settings and available renderings updates (both reference the rendering item).
+
+10. The guide must include a "Recommended Approach" section at the top (after Summary) explaining the Sitecore Accelerate **Clone Rendering** SPE script (`Scripts > Clone Rendering` on an existing rendering in Content Editor). This script automates creation of the rendering item and datasource template together, reducing manual errors. The manual sections that follow serve as fallback and as a validation checklist for items the script generates.
+
+11. Field names, template names, and component names must be taken directly from the implementation — do not invent or assume names not present in the source files.
 
 10. Write the guide to the canonical CMS config path defined by the task file and/or run-state.
 
@@ -104,7 +116,7 @@ The output must include:
 - placeholder settings update instructions
 - available renderings update instructions
 - content item creation instructions
-- serialization instructions
+- serialization coverage verification (agent-executed — the agent reads the module JSON, checks all required paths, adds any missing includes directly, and documents the result; the human only needs to run `dotnet sitecore ser pull`)
 - post-setup validation steps
 
 Field names and component names must be drawn from the implementation files — do not invent or approximate.

@@ -38,37 +38,33 @@ A concise description of what Sitecore items and configuration changes are requi
 
 ---
 
-## 1. Rendering Definition
+## Recommended Approach: Clone Rendering Script
 
-Create the rendering definition item that maps the component to Sitecore.
+Before executing the manual steps below, consider using the built-in Sitecore Accelerate **Clone Rendering** SPE script, which automates creation of the rendering item and datasource template in one step:
 
-**Item path:**  
-`/sitecore/layout/Renderings/Project/{SiteName}/{ComponentName}`
+1. In Content Editor, right-click an existing Json Rendering in your project layer → **Scripts** → **Clone Rendering**.
+2. Provide the new rendering name, destination folder, and confirm copying the datasource template.
+3. Click **Proceed** — this creates the rendering item and a cloned datasource template automatically.
+4. Return to the generated items and update field names, field types, and sources per the manual steps in sections 1 and 2.
 
-**Field values:**
-
-| Field | Value |
-|-------|-------|
-| Component Name | Exact component name as registered in the component map |
-| Data Source Template | Path to the data source template (section 2) |
-| Data Source Location | Suggested data source location query or path |
-| Rendering Type | JavaScript |
-
-**Notes:**  
-Any additional notes specific to this rendering.
+Use this approach as the primary path. The manual steps below serve as fallback or as guidance for validating the generated items.
 
 ---
 
-## 2. Data Templates
+## 1. Data Templates
 
-### 2.1 {Primary Data Source Template Name}
+Create all data templates **before** the rendering definition. The rendering definition references the datasource template by path; that path must exist before the rendering is created.
+
+Create any child/referenced templates (e.g. a linked item template) **before** the parent template that holds a Treelist pointing to them.
+
+### 1.1 {Primary Data Source Template Name}
 
 Create the data source template for the component's direct fields.
 
-**Template path:**  
+**Template path:**
 `/sitecore/templates/Project/{SiteName}/{TemplateName}`
 
-**Template base templates:**  
+**Template base templates:**
 List any base templates this template should inherit from (e.g., `Standard template`).
 
 **Fields:**
@@ -77,9 +73,30 @@ List any base templates this template should inherit from (e.g., `Standard templ
 |------------|------------|-------|
 | {FieldName} | {FieldType} | Notes on the field |
 
-### 2.2 {Additional Template Name} *(repeat as needed)*
+### 1.2 {Supporting Template Name} *(repeat as needed)*
 
-Repeat this section for each additional template required by the implementation.
+Repeat this section for each additional template required by the implementation. Create leaf/child templates before parent templates that reference them.
+
+---
+
+## 2. Rendering Definition
+
+Create the rendering definition item after all data templates exist.
+
+**Item path:**
+`/sitecore/layout/Renderings/Project/{SiteName}/{ComponentName}`
+
+**Field values:**
+
+| Field | Value |
+|-------|-------|
+| Component Name | Exact component name as registered in the component map |
+| Data Source Template | Path to the data source template (section 1.1) |
+| Data Source Location | Suggested data source location query or path |
+| Rendering Type | JavaScript |
+
+**Notes:**
+Any additional notes specific to this rendering.
 
 ---
 
@@ -87,13 +104,13 @@ Repeat this section for each additional template required by the implementation.
 
 Update the placeholder settings to allow this rendering in the expected placeholder.
 
-**Placeholder Settings item path:**  
+**Placeholder Settings item path:**
 `/sitecore/layout/Placeholder Settings/{PlaceholderKey}`
 
-**Action:**  
-Add the rendering definition (section 1) to the Allowed Controls field of this item.
+**Action:**
+Add the rendering definition (section 2) to the Allowed Controls field of this item.
 
-**Notes:**  
+**Notes:**
 Any additional notes about placeholder configuration.
 
 ---
@@ -102,11 +119,11 @@ Any additional notes about placeholder configuration.
 
 Add the rendering to the site's Available Renderings collection to make it selectable in Experience Editor and Pages.
 
-**Available Renderings item path:**  
+**Available Renderings item path:**
 `/sitecore/content/{SiteName}/Presentation/Available Renderings/{CollectionName}`
 
-**Action:**  
-Add the rendering definition (section 1) to the Renderings field.
+**Action:**
+Add the rendering definition (section 2) to the Renderings field.
 
 ---
 
@@ -114,13 +131,15 @@ Add the rendering definition (section 1) to the Renderings field.
 
 Create the initial content items required for the component to render. These items populate the fields defined in the data templates.
 
+Create any folder structure and leaf items (e.g. navigation link items) **before** the parent data source item that references them via Treelist or Multilist fields.
+
 ### 5.1 Data Source Item
 
-**Item path:**  
+**Item path:**
 `/sitecore/content/{SiteName}/{DataFolder}/{ItemName}`
 
-**Template:**  
-Reference to section 2.1 template.
+**Template:**
+Reference to section 1.1 template.
 
 **Fields to populate:**
 
@@ -130,30 +149,41 @@ Reference to section 2.1 template.
 
 ### 5.2 {Supporting Item} *(repeat as needed)*
 
-Repeat this section for supporting data items (e.g., navigation link items).
+Repeat this section for supporting data items (e.g., navigation link items). Create child/referenced items before the parent item that holds the Treelist field.
 
 ---
 
 ## 6. Serialization
 
-After creating the items above, serialize them using the project's serialization configuration.
+Read the serialization module file (typically `src/authoring/items/*.module.json`) and verify that every Sitecore path referenced in this guide is covered by an existing include entry. For each required path:
 
-**Serialize command:**
+- If covered: state so in this section — no human action required.
+- If **not** covered: add the missing `include` entry directly to the module JSON file. Document what was added.
+
+**Coverage table** (complete this during guide generation):
+
+| Required Path | Module Include Name | Status |
+|---|---|---|
+| `/sitecore/templates/Project/{SiteName}/` | `templates` | ✅ / ❌ |
+| `/sitecore/layout/Renderings/Project/{SiteName}/` | `renderings` | ✅ / ❌ |
+| `/sitecore/layout/Placeholder Settings/Project/{SiteName}` | `placeholder-settings` | ✅ / ❌ |
+| `/sitecore/content/{SiteName}/` | `content` | ✅ / ❌ |
+
+If all paths are covered, the human only needs to run `dotnet sitecore ser pull` after completing CMS steps. If the agent added missing entries, those changes will appear in the git diff and should be committed alongside the serialized items.
+
+**Pull command:**
 
 ```bash
 dotnet sitecore ser pull
 ```
 
-**Verify the following paths are covered by the serialization configuration:**
+**Commit:**
 
-- `/sitecore/layout/Renderings/Project/{SiteName}/`
-- `/sitecore/templates/Project/{SiteName}/`
-- `/sitecore/layout/Placeholder Settings/`
-- `/sitecore/content/{SiteName}/`
-
-If any path is not covered, update the serialization module configuration before pulling.
-
----
+```bash
+git add src/authoring/items/
+git commit -m "feat({TASK_ID}): serialize {ComponentName} CMS items"
+git push
+```
 
 ## 7. Post-Setup Validation
 
