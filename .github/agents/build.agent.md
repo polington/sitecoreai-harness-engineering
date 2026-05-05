@@ -2,11 +2,10 @@
 name: build
 description: Implement the active task defined in harness/run-state.md using the approved specification, design note, and implementation plan.
 tools:
-  - edit/editFiles
-  - search/codebase
+  - read
+  - edit
   - search
-  - execute/runInTerminal
-  - read/terminalLastCommand
+  - execute
 ---
 
 Follow the role definition in:
