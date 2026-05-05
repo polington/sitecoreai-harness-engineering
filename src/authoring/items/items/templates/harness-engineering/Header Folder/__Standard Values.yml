@@ -1,0 +1,36 @@
+﻿---
+ID: "a09b136e-0fb4-4b4c-9b8d-a86b63a3bd93"
+Parent: "fdbf32d4-d27c-439f-8ac8-bb369f1373b3"
+Template: "fdbf32d4-d27c-439f-8ac8-bb369f1373b3"
+Path: "/sitecore/templates/Project/harness-engineering/Header Folder/__Standard Values"
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {EE08D6D7-D248-4205-860E-933685D4CA4E}
+    {FDBF32D4-D27C-439F-8AC8-BB369F1373B3}
+- ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
+  Hint: __Shared revision
+  Value: "bb2693b1-a76e-4f88-8c28-f552ab9110a8"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20120621T071605Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "423d7581-8b1c-4cca-9c8d-89128e39bd43"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\rob.earlam@sitecore.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260505T011957Z

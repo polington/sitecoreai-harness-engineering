@@ -1,19 +1,19 @@
 ﻿---
-ID: "710e0aea-6e75-4b96-acc6-69084d6ef422"
-Parent: "5d40df1c-f348-4b9e-b785-cbd499d51a58"
-Template: "d64ccd42-7a94-44d2-98f9-29123fe80538"
-Path: "/sitecore/content/harness-engineering/harness-engineering/Presentation/Page Designs"
-BranchID: "45cf9f42-b3ac-4412-aab9-f8441c7e448e"
+ID: "8628d2bd-528d-4ad2-b4cd-3d057ca36c72"
+Parent: "710e0aea-6e75-4b96-acc6-69084d6ef422"
+Template: "1105b8f8-1e00-426b-bf1f-c840742d827b"
+Path: "/sitecore/content/harness-engineering/harness-engineering/Presentation/Page Designs/Default"
 SharedFields:
-- ID: "ba1f60d6-3deb-40cc-bb61-eec772279ee1"
-  Hint: TemplatesMapping
-  Value: "%7b95E29B45-4DCE-4B85-9F18-5A45E87531F1%7d%3d%257B8628D2BD-528D-4AD2-B4CD-3D057CA36C72%257D"
+- ID: "0966b999-0d0e-4278-acc9-9da69d461fe6"
+  Hint: PartialDesigns
+  Value: "76ad7e37-47dd-4f9d-9f46-a86d1845117c"
+- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
+  Hint: __Thumbnail
+  Value: |
+    <image mediaid="{F402F58F-4890-485B-8195-390A53CF6196}" />
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
-  Value: "f836b63f-2203-4fc8-9ad1-00a4d8e9f4c4"
-- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
-  Hint: __Originator
-  Value: "{2EA756FA-AED6-4599-83B7-36FEFE229B31}"
+  Value: "d469a690-f4e0-4070-87e8-1bdcb8fbeda8"
 Languages:
 - Language: en
   Versions:
@@ -21,7 +21,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20260413T044311Z
+      Value: 20260505T040648Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -32,11 +32,11 @@ Languages:
         sitecore\rob.earlam@sitecore.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "63e2ae39-d569-4a79-b75a-4b3e34179c89"
+      Value: "ca84e171-d454-4d94-89b7-f4e9e966f045"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\rob.earlam@sitecore.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20260505T040649Z
+      Value: 20260505T040659Z

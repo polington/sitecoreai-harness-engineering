@@ -1,19 +1,18 @@
 ﻿---
-ID: "710e0aea-6e75-4b96-acc6-69084d6ef422"
-Parent: "5d40df1c-f348-4b9e-b785-cbd499d51a58"
-Template: "d64ccd42-7a94-44d2-98f9-29123fe80538"
-Path: "/sitecore/content/harness-engineering/harness-engineering/Presentation/Page Designs"
-BranchID: "45cf9f42-b3ac-4412-aab9-f8441c7e448e"
+ID: "82a400bf-43e4-4296-aba0-c42ebecf0282"
+Parent: "217aa820-89fc-4b5f-97a8-29f5ab2e69dc"
+Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
+Path: "/sitecore/templates/Project/harness-engineering/NavigationLink"
 SharedFields:
-- ID: "ba1f60d6-3deb-40cc-bb61-eec772279ee1"
-  Hint: TemplatesMapping
-  Value: "%7b95E29B45-4DCE-4B85-9F18-5A45E87531F1%7d%3d%257B8628D2BD-528D-4AD2-B4CD-3D057CA36C72%257D"
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: Office/32x32/arrow_right.png
+- ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
+  Hint: __Base template
+  Value: "{1930BBEB-7805-471A-A3BE-4858AC7CF696}"
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
-  Value: "f836b63f-2203-4fc8-9ad1-00a4d8e9f4c4"
-- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
-  Hint: __Originator
-  Value: "{2EA756FA-AED6-4599-83B7-36FEFE229B31}"
+  Value: "1eb56ea4-4e26-473e-b496-6585fbf2cb39"
 Languages:
 - Language: en
   Versions:
@@ -21,7 +20,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20260413T044311Z
+      Value: 20260505T011720Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -32,11 +31,11 @@ Languages:
         sitecore\rob.earlam@sitecore.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "63e2ae39-d569-4a79-b75a-4b3e34179c89"
+      Value: "120e50b6-12b9-47a5-9285-6bc01dcb68b4"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\rob.earlam@sitecore.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20260505T040649Z
+      Value: 20260505T013452Z
