@@ -8,6 +8,7 @@ import {
 } from '@sitecore-content-sdk/nextjs/codegen';
 // end of built-in imports
 
+import { jsx, Fragment, jsxs } from 'react/jsx-runtime';
 import client from 'src/lib/sitecore-client';
 import { CdpHelper, useSitecore } from '@sitecore-content-sdk/nextjs';
 import { useEffect, useState } from 'react';
@@ -17,6 +18,14 @@ import HeaderLogo from 'src/components/Header/headerLogo';
 import HeaderNav from 'src/components/Header/headerNav';
 
 const importMap = [
+  {
+    module: 'react/jsx-runtime',
+    exports: [
+      { name: 'jsx', value: jsx },
+      { name: 'Fragment', value: Fragment },
+      { name: 'jsxs', value: jsxs },
+    ]
+  },
   {
     module: 'src/lib/sitecore-client',
     exports: [
