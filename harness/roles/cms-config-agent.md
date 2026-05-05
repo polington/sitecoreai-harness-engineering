@@ -204,6 +204,12 @@ Apply this rule to every query written in a datasource template field `Source` v
 ### `@@templatename` — acceptable with a caveat note
 Using `@@templatename='TemplateName'` in queries is acceptable when item GUIDs are not yet known (items have not been created). However, always include a note instructing the developer to replace `@@templatename` with `@@templateid='{GUID}'` once the template has been created, since display names are not globally unique and `@@templateid` is the production-safe alternative. The note should appear inline next to the query, not only in an appendix.
 
+### Clone Rendering — always select "Create Copy" for datasource and rendering parameters
+When the Clone Rendering SPE script dialog is used, the datasource template and rendering parameters options each default to **Inheritance**. Always instruct the developer to change both to **Create Copy**. Never document the Inheritance option as acceptable or leave it as the default. A rendering left on Inheritance shares its datasource template with the source rendering, causing field conflicts that are difficult to debug.
+
+### Partial Design and Page Design creation — Pages UI only, never Content Editor
+Partial Designs and Page Designs must always be created through the **Sitecore Pages UI**, not through Content Editor insert options. Do not document Content Editor as an alternative or primary path for creating these items. The Pages UI is the only supported and reliable method for creating SXA design items in XM Cloud.
+
 ### Accelerate Cookbook — pre-execution URL check
 Because the Accelerate Cookbook recipe URL (`https://developers.sitecore.com/learn/accelerate/xm-cloud/implementation/developer-experience/creating-new-components`) may be inaccessible at guide generation time, include the following instruction at the top of section 1 in the guide:
 
