@@ -38,34 +38,74 @@ A concise description of what Sitecore items and configuration changes are requi
 
 ---
 
-## Recommended Approach: Clone Rendering Script
+## 1. Create Rendering and Datasource Template
 
-Before executing the manual steps below, consider using the built-in Sitecore Accelerate **Clone Rendering** SPE script, which automates creation of the rendering item and datasource template in one step:
+Follow the **Sitecore Accelerate Cookbook** recipe for creating new components. Fetch and read the recipe, then reproduce its steps here, substituting `{ComponentName}`, `{SiteName}`, and `{TemplateName}` with the values for this task.
 
-1. In Content Editor, right-click an existing Json Rendering in your project layer → **Scripts** → **Clone Rendering**.
-2. Provide the new rendering name, destination folder, and confirm copying the datasource template.
-3. Click **Proceed** — this creates the rendering item and a cloned datasource template automatically.
-4. Return to the generated items and update field names, field types, and sources per the manual steps in sections 1 and 2.
+**Recipe source:**
+`https://developers.sitecore.com/learn/accelerate/xm-cloud/implementation/developer-experience/creating-new-components`
 
-Use this approach as the primary path. The manual steps below serve as fallback or as guidance for validating the generated items.
+> The agent generating this guide must fetch the above URL at generation time and embed the steps from the live recipe here. Do not substitute static steps — the recipe is the source of truth.
+>
+> **Fallback (recipe unavailable):** If the URL cannot be fetched, use the Clone Rendering SPE script: right-click an existing Json Rendering in Content Editor → **Scripts > Clone Rendering**, provide the rendering name and destination paths, and click **Proceed**. Label this section clearly as a fallback.
+
+**Steps (sourced from the Accelerate Cookbook recipe — insert here at generation time):**
+
+{ACCELERATE_RECIPE_STEPS}
+
+After completing the recipe steps, proceed to section 2 to update the generated items with the correct field values for this component.
 
 ---
 
-## 1. Data Templates
+## 2. Configure Generated Items
 
-Create all data templates **before** the rendering definition. The rendering definition references the datasource template by path; that path must exist before the rendering is created.
+Update the rendering item and datasource template that the Clone Rendering script created. The script pre-populates these items with defaults from the source rendering; the following steps correct them for this component.
 
-Create any child/referenced templates (e.g. a linked item template) **before** the parent template that holds a Treelist pointing to them.
+### 2.1 Update the Rendering Item
 
-### 1.1 {Primary Data Source Template Name}
+**Item path:**
+`/sitecore/layout/Renderings/Project/{SiteName}/{ComponentName}`
 
-Create the data source template for the component's direct fields.
+**Set or verify these field values:**
+
+| Field | Required Value |
+|-------|----------------|
+| Component Name | Exact component name as registered in the component map |
+| Data Source Template | Path to the datasource template (section 2.2) |
+| Data Source Location | Suggested data source location query or path |
+
+> **Critical:** The `Component Name` field must exactly match the key in the component map. A mismatch causes the rendering to display blank on the page.
+
+### 2.2 Update the Datasource Template
 
 **Template path:**
 `/sitecore/templates/Project/{SiteName}/{TemplateName}`
 
-**Template base templates:**
+Remove any fields cloned from the source rendering that do not belong to this component. Add or rename fields to match the implementation exactly.
+
+**Required fields:**
+
+| Field Name | Field Type | Notes |
+|------------|------------|-------|
+| {FieldName} | {FieldType} | Notes on the field |
+
+---
+
+## 3. Supporting Templates *(if required)*
+
+Create any additional templates that the datasource template references via Treelist or Multilist fields. These are not created by the Clone Rendering script and must be created manually.
+
+Create leaf/child templates **before** the parent template that holds a Treelist or Multilist field pointing to them. If these templates must exist before the Clone Rendering script runs (e.g. because the Multilist source query references them), create them before section 1.
+
+### 3.1 {Supporting Template Name} *(repeat as needed)*
+
+**Template path:**
+`/sitecore/templates/Project/{SiteName}/{TemplateName}`
+
+**Base templates:**
 List any base templates this template should inherit from (e.g., `Standard template`).
+
+**Template section:** `Data`
 
 **Fields:**
 
@@ -73,34 +113,9 @@ List any base templates this template should inherit from (e.g., `Standard templ
 |------------|------------|-------|
 | {FieldName} | {FieldType} | Notes on the field |
 
-### 1.2 {Supporting Template Name} *(repeat as needed)*
-
-Repeat this section for each additional template required by the implementation. Create leaf/child templates before parent templates that reference them.
-
 ---
 
-## 2. Rendering Definition
-
-Create the rendering definition item after all data templates exist.
-
-**Item path:**
-`/sitecore/layout/Renderings/Project/{SiteName}/{ComponentName}`
-
-**Field values:**
-
-| Field | Value |
-|-------|-------|
-| Component Name | Exact component name as registered in the component map |
-| Data Source Template | Path to the data source template (section 1.1) |
-| Data Source Location | Suggested data source location query or path |
-| Rendering Type | JavaScript |
-
-**Notes:**
-Any additional notes specific to this rendering.
-
----
-
-## 3. Placeholder Settings
+## 4. Placeholder Settings
 
 Update the placeholder settings to allow this rendering in the expected placeholder.
 
@@ -108,14 +123,14 @@ Update the placeholder settings to allow this rendering in the expected placehol
 `/sitecore/layout/Placeholder Settings/{PlaceholderKey}`
 
 **Action:**
-Add the rendering definition (section 2) to the Allowed Controls field of this item.
+Add the rendering definition (section 1) to the Allowed Controls field of this item.
 
 **Notes:**
 Any additional notes about placeholder configuration.
 
 ---
 
-## 4. Available Renderings
+## 5. Available Renderings
 
 Add the rendering to the site's Available Renderings collection to make it selectable in Experience Editor and Pages.
 
@@ -123,23 +138,23 @@ Add the rendering to the site's Available Renderings collection to make it selec
 `/sitecore/content/{SiteName}/Presentation/Available Renderings/{CollectionName}`
 
 **Action:**
-Add the rendering definition (section 2) to the Renderings field.
+Add the rendering definition (section 1) to the Renderings field.
 
 ---
 
-## 5. Content Items
+## 6. Content Items
 
 Create the initial content items required for the component to render. These items populate the fields defined in the data templates.
 
 Create any folder structure and leaf items (e.g. navigation link items) **before** the parent data source item that references them via Treelist or Multilist fields.
 
-### 5.1 Data Source Item
+### 6.1 Data Source Item
 
 **Item path:**
 `/sitecore/content/{SiteName}/{DataFolder}/{ItemName}`
 
 **Template:**
-Reference to section 1.1 template.
+Reference to the datasource template from section 2.2.
 
 **Fields to populate:**
 
@@ -147,13 +162,13 @@ Reference to section 1.1 template.
 |-------|---------------|
 | {FieldName} | Suggested initial value or `(set by author)` |
 
-### 5.2 {Supporting Item} *(repeat as needed)*
+### 6.2 {Supporting Item} *(repeat as needed)*
 
 Repeat this section for supporting data items (e.g., navigation link items). Create child/referenced items before the parent item that holds the Treelist field.
 
 ---
 
-## 6. Serialization
+## 7. Serialization
 
 Read the serialization module file (typically `src/authoring/items/*.module.json`) and verify that every Sitecore path referenced in this guide is covered by an existing include entry. For each required path:
 
@@ -185,7 +200,7 @@ git commit -m "feat({TASK_ID}): serialize {ComponentName} CMS items"
 git push
 ```
 
-## 7. Post-Setup Validation
+## 8. Post-Setup Validation
 
 After completing the steps above, verify the configuration is working correctly.
 
