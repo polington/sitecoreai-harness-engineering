@@ -1,19 +1,20 @@
 ﻿---
-ID: "710e0aea-6e75-4b96-acc6-69084d6ef422"
-Parent: "5d40df1c-f348-4b9e-b785-cbd499d51a58"
-Template: "d64ccd42-7a94-44d2-98f9-29123fe80538"
-Path: "/sitecore/content/harness-engineering/harness-engineering/Presentation/Page Designs"
-BranchID: "45cf9f42-b3ac-4412-aab9-f8441c7e448e"
+ID: "7da2da47-0375-49f1-8b33-0e532acb3fa9"
+Parent: "4955ed69-f207-4c7d-8f29-da2b4ffe0b3b"
+Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Path: "/sitecore/content/harness-engineering/harness-engineering/Data/Navigation Links"
 SharedFields:
-- ID: "ba1f60d6-3deb-40cc-bb61-eec772279ee1"
-  Hint: TemplatesMapping
-  Value: "%7b95E29B45-4DCE-4B85-9F18-5A45E87531F1%7d%3d%257B8628D2BD-528D-4AD2-B4CD-3D057CA36C72%257D"
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: Office/32x32/arrow_shuffle.png
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {A87A00B1-E6DB-45AB-8B54-636FEC3B5523}
+    {82A400BF-43E4-4296-ABA0-C42EBECF0282}
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
-  Value: "f836b63f-2203-4fc8-9ad1-00a4d8e9f4c4"
-- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
-  Hint: __Originator
-  Value: "{2EA756FA-AED6-4599-83B7-36FEFE229B31}"
+  Value: "af041232-cb9d-4245-ada5-948091ec0cc1"
 Languages:
 - Language: en
   Versions:
@@ -21,7 +22,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20260413T044311Z
+      Value: 20260505T013029Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -32,11 +33,11 @@ Languages:
         sitecore\rob.earlam@sitecore.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "63e2ae39-d569-4a79-b75a-4b3e34179c89"
+      Value: "dd0f70d0-ac50-4d57-a51d-b1a744fa2789"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\rob.earlam@sitecore.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20260505T040649Z
+      Value: 20260505T013428Z

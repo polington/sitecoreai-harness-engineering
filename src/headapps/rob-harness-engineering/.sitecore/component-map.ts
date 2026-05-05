@@ -4,6 +4,7 @@ import { BYOCServerWrapper, NextjsContentSdkComponent, FEaaSServerWrapper } from
 import { Form } from '@sitecore-content-sdk/nextjs';
 
 // end of built-in components
+import * as PartialDesignDynamicPlaceholder from 'src/components/partial-design-dynamic-placeholder/PartialDesignDynamicPlaceholder';
 import * as headerTypes from 'src/components/Header/headerTypes';
 import * as headerNav from 'src/components/Header/headerNav';
 import * as headerLogo from 'src/components/Header/headerLogo';
@@ -13,6 +14,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['BYOCWrapper', BYOCServerWrapper],
   ['FEaaSWrapper', FEaaSServerWrapper],
   ['Form', { ...Form, componentType: 'client' }],
+  ['PartialDesignDynamicPlaceholder', { ...PartialDesignDynamicPlaceholder }],
   ['headerTypes', { ...headerTypes }],
   ['headerNav', { ...headerNav }],
   ['headerLogo', { ...headerLogo }],
