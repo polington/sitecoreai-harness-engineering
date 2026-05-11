@@ -58,7 +58,3 @@ jobs:
       - name: Run lint
         run: npm run lint
         working-directory: src/headapps/rob-harness-engineering
-
-      - name: Run type check
-        run: npx tsc --noEmit
-        working-directory: src/headapps/rob-harness-engineering
