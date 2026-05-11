@@ -1,0 +1,64 @@
+# CI — Pull Request Validation Workflow
+#
+# Triggers on pull request events targeting the default branch.
+# Runs the head application's test suite, linter, and type checker.
+#
+# ──────────────────────────────────────────────────────────────
+# Branch Protection Setup (manual — GitHub repository settings)
+# ──────────────────────────────────────────────────────────────
+#
+# To require this workflow to pass before merging:
+#
+#   1. Go to the repository on GitHub.
+#   2. Navigate to Settings → Branches.
+#   3. Under "Branch protection rules", click "Add rule" (or edit
+#      the existing rule for the default branch).
+#   4. Enter the branch name pattern (e.g. "main").
+#   5. Enable "Require status checks to pass before merging".
+#   6. In the search box, find and select the "validate" status check.
+#   7. Optionally enable "Require branches to be up to date before merging".
+#   8. Click "Save changes".
+#
+# After this configuration, pull requests targeting the default branch
+# cannot be merged unless the "validate" job completes successfully.
+# ──────────────────────────────────────────────────────────────
+
+name: CI
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - main
+
+jobs:
+  validate:
+    name: Validate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: 'src/headapps/rob-harness-engineering/package-lock.json'
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: src/headapps/rob-harness-engineering
+
+      - name: Run tests
+        run: npm test
+        working-directory: src/headapps/rob-harness-engineering
+
+      - name: Run lint
+        run: npm run lint
+        working-directory: src/headapps/rob-harness-engineering
+
+      - name: Run type check
+        run: npx tsc --noEmit
+        working-directory: src/headapps/rob-harness-engineering
