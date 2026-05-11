@@ -1,0 +1,27 @@
+﻿---
+ID: "3d6830a9-5213-4ee7-9243-120c42255cf6"
+Parent: "4181d635-0cee-46f6-87e2-769472b000fb"
+Template: "4181d635-0cee-46f6-87e2-769472b000fb"
+Path: "/sitecore/templates/Project/harness-engineering/Rendering Parameters/SiteFooter Parameters/__Standard Values"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20211012T120926Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\JssImport
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "894bfcbc-521c-4612-a3e6-278b8863d3ac"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\rob.earlam@sitecore.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260511T035747Z

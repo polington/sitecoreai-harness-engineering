@@ -84,12 +84,13 @@ Follow this process when producing a CMS Configuration Guide:
 7. Generate a stage-appropriate run ID for the CMS Configuration stage using the run-id standard.
 
 8. The guide must use the **Sitecore Accelerate Cookbook** as the authoritative source for how to create the rendering item and datasource template. Before writing section 1 of the guide:
-   - Fetch and read the relevant recipe at:
+   - Attempt to fetch the recipe using the `web_fetch` tool:
      `https://developers.sitecore.com/learn/accelerate/xm-cloud/implementation/developer-experience/creating-new-components`
-   - Follow the steps exactly as prescribed in that recipe. Do not substitute hardcoded steps — the recipe is the source of truth and may change over time.
-   - If the recipe cannot be fetched, note the failure in the guide and fall back to the Clone Rendering SPE script steps (right-click an existing rendering → **Scripts > Clone Rendering**), clearly labelling the section as a fallback.
+   - If `web_fetch` returns a 403 or fails, use the `web_search` tool to search for the recipe content — for example: `"Sitecore Accelerate Cookbook XM Cloud creating new components rendering datasource template"`. Extract the authoritative steps from the search result.
+   - Follow the steps as prescribed in the live recipe. Do not substitute hardcoded steps when the live content is available — the recipe may change over time.
+   - If neither `web_fetch` nor `web_search` yields the recipe content, **stop and escalate** — do not fall back to hardcoded steps. Record the failure clearly in your response so the orchestrator and human reviewer can resolve the access issue before re-running.
    - The guide structure must reflect this:
-     - Section 1 must contain the component creation steps sourced from the Accelerate Cookbook recipe, as imperative instructions.
+     - Section 1 must contain the component creation steps sourced from the Accelerate Cookbook recipe (or the fallback), as imperative instructions.
      - Section 2 must contain field-update instructions for the items the recipe creates (datasource template fields and any rendering fields that need correction for this specific component).
      - Any supporting templates the recipe does not create (e.g. a linked item template for a Multilist/Treelist field) must be documented as their own section. If they must exist before the recipe steps run, place them before section 1; if they can be created after, place them after section 2.
      - Manual item creation (bypassing the recipe) must not appear as a primary path.

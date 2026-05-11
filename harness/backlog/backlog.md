@@ -28,7 +28,7 @@ Suggested status values:
 ---
 
 ### B002 — Site Header with Navigation
-**Status:** Ready for Spec  
+**Status:** Done  
 **Summary:** Implement a site header component that renders authored navigation links from Sitecore layout data. The header should appear in the `headless-header` placeholder, support a site logo, primary navigation items, and responsive mobile behaviour.
 
 ---

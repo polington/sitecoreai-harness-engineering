@@ -1,19 +1,18 @@
 ﻿---
-ID: "8628d2bd-528d-4ad2-b4cd-3d057ca36c72"
-Parent: "710e0aea-6e75-4b96-acc6-69084d6ef422"
-Template: "1105b8f8-1e00-426b-bf1f-c840742d827b"
-Path: "/sitecore/content/harness-engineering/harness-engineering/Presentation/Page Designs/Default"
+ID: "6b1e69d2-a212-4fee-8f68-12817120840f"
+Parent: "f15a94e6-3836-424f-828e-fa6859864bbc"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: "/sitecore/templates/Project/harness-engineering/SiteFooter/Data/CopyrightText"
 SharedFields:
-- ID: "0966b999-0d0e-4278-acc9-9da69d461fe6"
-  Hint: PartialDesigns
-  Value: "76ad7e37-47dd-4f9d-9f46-a86d1845117c|4992a46f-debb-4d3b-b0f6-85e81ec85c77"
-- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
-  Hint: __Thumbnail
-  Value: |
-    <image mediaid="{34A3C62C-CA6F-46F6-83E8-4269AD48B5CE}" />
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Single-Line Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 600
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
-  Value: "de4d97a2-c0a6-4227-b045-d96c501db0bd"
+  Value: "27088272-a108-4740-9e66-c1906854be82"
 Languages:
 - Language: en
   Versions:
@@ -21,7 +20,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20260505T040648Z
+      Value: 20260511T040106Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -32,11 +31,11 @@ Languages:
         sitecore\rob.earlam@sitecore.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "12935a56-5723-45e5-8d35-c58ff89d214e"
+      Value: "ba6cf033-8993-4b7c-89d1-ce679c8aa93d"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\rob.earlam@sitecore.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20260511T041206Z
+      Value: 20260511T040118Z
