@@ -5,6 +5,11 @@ import { Form } from '@sitecore-content-sdk/nextjs';
 
 // end of built-in components
 import * as PartialDesignDynamicPlaceholder from 'src/components/partial-design-dynamic-placeholder/PartialDesignDynamicPlaceholder';
+import * as footerTypes from 'src/components/SiteFooter/footerTypes';
+import * as footerSocialLinks from 'src/components/SiteFooter/footerSocialLinks';
+import * as footerNav from 'src/components/SiteFooter/footerNav';
+import * as footerLogo from 'src/components/SiteFooter/footerLogo';
+import * as SiteFooter from 'src/components/SiteFooter/SiteFooter';
 import * as headerTypes from 'src/components/Header/headerTypes';
 import * as headerNav from 'src/components/Header/headerNav';
 import * as headerLogo from 'src/components/Header/headerLogo';
@@ -15,6 +20,11 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['FEaaSWrapper', FEaaSServerWrapper],
   ['Form', { ...Form, componentType: 'client' }],
   ['PartialDesignDynamicPlaceholder', { ...PartialDesignDynamicPlaceholder }],
+  ['footerTypes', { ...footerTypes }],
+  ['footerSocialLinks', { ...footerSocialLinks }],
+  ['footerNav', { ...footerNav }],
+  ['footerLogo', { ...footerLogo }],
+  ['SiteFooter', { ...SiteFooter }],
   ['headerTypes', { ...headerTypes }],
   ['headerNav', { ...headerNav }],
   ['headerLogo', { ...headerLogo }],

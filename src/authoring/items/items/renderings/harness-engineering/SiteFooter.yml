@@ -1,18 +1,18 @@
 ﻿---
-ID: "9829f96d-f392-4966-bbd5-8adf381199e0"
+ID: "092b66e2-f0ac-4a8c-8f88-8da5222b984c"
 Parent: "7eba8161-0be3-4759-b54a-f9ad6a9bfbc9"
 Template: "04646a89-996f-4ee7-878a-ffdbf1f0ef0d"
-Path: "/sitecore/layout/Renderings/Project/harness-engineering/Header"
+Path: "/sitecore/layout/Renderings/Project/harness-engineering/SiteFooter"
 SharedFields:
 - ID: "037fe404-dd19-4bf7-8e30-4dadf68b27b0"
   Hint: componentName
-  Value: Header
+  Value: SiteFooter
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
-  Value: Office/32x32/document_header.png
+  Value: Office/32x32/document_footer.png
 - ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
   Hint: Datasource Template
-  Value: "/sitecore/templates/Project/harness-engineering/Header"
+  Value: "/sitecore/templates/Project/harness-engineering/SiteFooter"
 - ID: "7d8ae35f-9ed1-43b5-96a2-0a5f040d4e4e"
   Hint: Open Properties after Add
   Value: 0
@@ -21,16 +21,13 @@ SharedFields:
   Value: 0
 - ID: "a77e8568-1ab3-44f1-a664-b7c37ec7810d"
   Hint: Parameters Template
-  Value: "{A37FE403-41AA-4FEA-83D2-71A0840AC03F}"
+  Value: "{4181D635-0CEE-46F6-87E2-769472B000FB}"
 - ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
   Hint: Datasource Location
-  Value: "query:$site/*[@@name='Data']/*[@@templateid='{EE08D6D7-D248-4205-860E-933685D4CA4E}']"
-- ID: "c39a90ce-0035-41bb-90f6-3c8a6ea87797"
-  Hint: AddFieldEditorButton
-  Value: 
+  Value: "query:$site/*[@@name='Data']/*[@@templatename='SiteFooter']"
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
-  Value: "28991f1a-c282-4cd0-bae7-9e0ac60748c4"
+  Value: "fbb01677-22db-4992-aec0-7251382a4b05"
 - ID: "e829c217-5e94-4306-9c48-2634b094fdc2"
   Hint: OtherProperties
   Value: IsRenderingsWithDynamicPlaceholders=true
@@ -71,7 +68,7 @@ Languages:
   Fields:
   - ID: "30e85e5d-e00a-4864-b358-7624d511deb4"
     Hint: __Unversioned revision
-    Value: "e1396a90-939d-40b3-9f5a-4802dfc4a919"
+    Value: "41c750fa-21f7-49a8-ab2b-0eca0b037922"
   Versions:
   - Version: 1
     Fields:
@@ -84,14 +81,14 @@ Languages:
         sitecore\JssImport
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "c71eed98-7003-441c-b562-980f66de40d7"
+      Value: "7d27f051-86bc-4198-ac3d-59f368ae54bd"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\rob.earlam@sitecore.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20260511T035843Z
+      Value: 20260511T035930Z
 - Language: "ja-JP"
   Fields:
   - ID: "30e85e5d-e00a-4864-b358-7624d511deb4"

@@ -7,17 +7,21 @@ import {
 } from '@sitecore-content-sdk/nextjs/codegen';
 // end of built-in imports
 
-import { jsx } from 'react/jsx-runtime';
+import { jsx, jsxs } from 'react/jsx-runtime';
 import React from 'react';
 import componentMap from '.sitecore/component-map';
 import { AppPlaceholder, Link, Image } from '@sitecore-content-sdk/nextjs';
 import NextLink from 'next/link';
+import FooterLogo from 'src/components/SiteFooter/footerLogo';
+import FooterNav from 'src/components/SiteFooter/footerNav';
+import FooterSocialLinks from 'src/components/SiteFooter/footerSocialLinks';
 
 const importMap = [
   {
     module: 'react/jsx-runtime',
     exports: [
       { name: 'jsx', value: jsx },
+      { name: 'jsxs', value: jsxs },
     ]
   },
   {
@@ -44,6 +48,24 @@ const importMap = [
     module: 'next/link',
     exports: [
       { name: 'default', value: NextLink },
+    ]
+  },
+  {
+    module: 'src/components/SiteFooter/footerLogo',
+    exports: [
+      { name: 'default', value: FooterLogo },
+    ]
+  },
+  {
+    module: 'src/components/SiteFooter/footerNav',
+    exports: [
+      { name: 'default', value: FooterNav },
+    ]
+  },
+  {
+    module: 'src/components/SiteFooter/footerSocialLinks',
+    exports: [
+      { name: 'default', value: FooterSocialLinks },
     ]
   }
 ] as ImportEntry[];

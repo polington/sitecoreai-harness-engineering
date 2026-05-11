@@ -1,19 +1,18 @@
 ﻿---
-ID: "8628d2bd-528d-4ad2-b4cd-3d057ca36c72"
-Parent: "710e0aea-6e75-4b96-acc6-69084d6ef422"
-Template: "1105b8f8-1e00-426b-bf1f-c840742d827b"
-Path: "/sitecore/content/harness-engineering/harness-engineering/Presentation/Page Designs/Default"
+ID: "b6e1a18e-af03-4ed2-add1-dcc8ed04abe1"
+Parent: "91a3e50d-5dba-41dd-9c18-bb251d30907f"
+Template: "5c547d4e-7111-4995-95b0-6b561751bf2e"
+Path: "/sitecore/layout/Placeholder Settings/Project/harness-engineering/headless-footer"
 SharedFields:
-- ID: "0966b999-0d0e-4278-acc9-9da69d461fe6"
-  Hint: PartialDesigns
-  Value: "76ad7e37-47dd-4f9d-9f46-a86d1845117c|4992a46f-debb-4d3b-b0f6-85e81ec85c77"
-- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
-  Hint: __Thumbnail
-  Value: |
-    <image mediaid="{34A3C62C-CA6F-46F6-83E8-4269AD48B5CE}" />
+- ID: "7256bdab-1fd2-49dd-b205-cb4873d2917c"
+  Hint: Placeholder Key
+  Value: "headless-footer"
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
-  Value: "de4d97a2-c0a6-4227-b045-d96c501db0bd"
+  Value: "6ffa4319-0c11-4863-b56a-9cc96c41aa72"
+- ID: "e391b526-d0c5-439d-803e-17512eae6222"
+  Hint: Allowed Controls
+  Value: "{092B66E2-F0AC-4A8C-8F88-8DA5222B984C}"
 Languages:
 - Language: en
   Versions:
@@ -21,7 +20,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20260505T040648Z
+      Value: 20260511T040146Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -32,11 +31,11 @@ Languages:
         sitecore\rob.earlam@sitecore.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "12935a56-5723-45e5-8d35-c58ff89d214e"
+      Value: "c1d26ca9-5bb1-43e4-8c2e-3aea0a6ad1c0"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\rob.earlam@sitecore.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20260511T041206Z
+      Value: 20260511T040158Z

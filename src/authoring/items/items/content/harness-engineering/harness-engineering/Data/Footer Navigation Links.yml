@@ -1,19 +1,20 @@
 ﻿---
-ID: "8628d2bd-528d-4ad2-b4cd-3d057ca36c72"
-Parent: "710e0aea-6e75-4b96-acc6-69084d6ef422"
-Template: "1105b8f8-1e00-426b-bf1f-c840742d827b"
-Path: "/sitecore/content/harness-engineering/harness-engineering/Presentation/Page Designs/Default"
+ID: "597239a4-a97b-4e80-9e53-a4ff4e0516c7"
+Parent: "4955ed69-f207-4c7d-8f29-da2b4ffe0b3b"
+Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Path: "/sitecore/content/harness-engineering/harness-engineering/Data/Footer Navigation Links"
 SharedFields:
-- ID: "0966b999-0d0e-4278-acc9-9da69d461fe6"
-  Hint: PartialDesigns
-  Value: "76ad7e37-47dd-4f9d-9f46-a86d1845117c|4992a46f-debb-4d3b-b0f6-85e81ec85c77"
-- ID: "c7c26117-dbb1-42b2-ab5e-f7223845cca3"
-  Hint: __Thumbnail
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: office/32x32/document_footer.png
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
   Value: |
-    <image mediaid="{34A3C62C-CA6F-46F6-83E8-4269AD48B5CE}" />
+    {A87A00B1-E6DB-45AB-8B54-636FEC3B5523}
+    {79C9D7DD-B8E0-4121-8364-F78CE0F9AEEC}
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
-  Value: "de4d97a2-c0a6-4227-b045-d96c501db0bd"
+  Value: "40739156-d2dd-4e04-b706-8e3dfcfbb784"
 Languages:
 - Language: en
   Versions:
@@ -21,7 +22,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20260505T040648Z
+      Value: 20260511T040337Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -32,11 +33,11 @@ Languages:
         sitecore\rob.earlam@sitecore.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "12935a56-5723-45e5-8d35-c58ff89d214e"
+      Value: "475c6fe6-daf0-46e5-b4c1-d62e7f94acec"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\rob.earlam@sitecore.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20260511T041206Z
+      Value: 20260511T040446Z
