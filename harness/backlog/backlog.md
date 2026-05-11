@@ -90,3 +90,9 @@ Suggested status values:
 ### B012 — Dictionary-Driven UI Labels
 **Status:** Planned  
 **Summary:** Replace any hard-coded UI strings (button labels, aria labels, fallback text) with dictionary entries fetched via the Sitecore dictionary service. Ensure the i18n pipeline correctly resolves labels per site and locale.
+
+---
+
+### B013 - Automated CI/CD Testing
+**Status:** Planned  
+**Summary:** Create GitHub Actions to run the tests built into the head application, to ensure that the code still functions when a PR is opened.
