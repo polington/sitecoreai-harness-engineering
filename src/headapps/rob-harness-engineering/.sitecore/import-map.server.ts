@@ -15,6 +15,7 @@ import NextLink from 'next/link';
 import FooterLogo from 'src/components/SiteFooter/footerLogo';
 import FooterNav from 'src/components/SiteFooter/footerNav';
 import FooterSocialLinks from 'src/components/SiteFooter/footerSocialLinks';
+import PromoCard from 'src/components/PromoCardGrid/promoCard';
 
 const importMap = [
   {
@@ -66,6 +67,12 @@ const importMap = [
     module: 'src/components/SiteFooter/footerSocialLinks',
     exports: [
       { name: 'default', value: FooterSocialLinks },
+    ]
+  },
+  {
+    module: 'src/components/PromoCardGrid/promoCard',
+    exports: [
+      { name: 'default', value: PromoCard },
     ]
   }
 ] as ImportEntry[];

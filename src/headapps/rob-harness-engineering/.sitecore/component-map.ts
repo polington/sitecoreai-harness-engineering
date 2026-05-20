@@ -10,6 +10,9 @@ import * as footerSocialLinks from 'src/components/SiteFooter/footerSocialLinks'
 import * as footerNav from 'src/components/SiteFooter/footerNav';
 import * as footerLogo from 'src/components/SiteFooter/footerLogo';
 import * as SiteFooter from 'src/components/SiteFooter/SiteFooter';
+import * as promoCardGridTypes from 'src/components/PromoCardGrid/promoCardGridTypes';
+import * as promoCard from 'src/components/PromoCardGrid/promoCard';
+import * as PromoCardGrid from 'src/components/PromoCardGrid/PromoCardGrid';
 import * as heroBannerTypes from 'src/components/HeroBanner/heroBannerTypes';
 import * as HeroBanner from 'src/components/HeroBanner/HeroBanner';
 import * as headerTypes from 'src/components/Header/headerTypes';
@@ -27,6 +30,9 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['footerNav', { ...footerNav }],
   ['footerLogo', { ...footerLogo }],
   ['SiteFooter', { ...SiteFooter }],
+  ['promoCardGridTypes', { ...promoCardGridTypes }],
+  ['promoCard', { ...promoCard }],
+  ['PromoCardGrid', { ...PromoCardGrid }],
   ['heroBannerTypes', { ...heroBannerTypes }],
   ['HeroBanner', { ...HeroBanner }],
   ['headerTypes', { ...headerTypes }],

@@ -1,0 +1,45 @@
+﻿---
+ID: "4a0d9f25-ed83-4af0-9a1c-4e3e4b793bf5"
+Parent: "eb0da30b-171c-4147-923a-57a6e885a782"
+Template: "2aed83ac-94f4-4756-b0f7-92f7e3d91779"
+Path: "/sitecore/content/harness-engineering/harness-engineering/Data/PromoCardGrid/Cards/Promo Card 3"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "10b997f2-e729-4d16-accc-7986b6f9f565"
+      Hint: Image
+      Value: |
+        <image mediaid="{D51CB054-BF89-447A-8FB2-C58C6944945B}" />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20260520T050449Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\rob.earlam@sitecore.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\rob.earlam@sitecore.com
+    - ID: "6f0a8e7e-db81-4f96-b7cb-86787fa3c113"
+      Hint: Title
+      Value: Customer Spotlight
+    - ID: "6fce33fc-1764-45f4-83b4-e5b80bf26c96"
+      Hint: Link
+      Value: |
+        <link text="" anchor="" linktype="internal" class="" title="" target="_blank" querystring="" id="{19976B65-2DE0-4734-86D4-F6D03BAA4DA6}" />
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "c0b0956d-4c36-4309-bd2c-a7c771825da4"
+    - ID: "94e5f100-e998-49ed-a71e-a6ca8817b72a"
+      Hint: Description
+      Value: See how our customers are achieving results with our platform.
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\rob.earlam@sitecore.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260520T050701Z
