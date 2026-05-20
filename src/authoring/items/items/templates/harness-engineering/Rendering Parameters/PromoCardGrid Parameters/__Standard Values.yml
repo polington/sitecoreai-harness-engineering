@@ -1,0 +1,27 @@
+﻿---
+ID: "e27d163b-5cf1-4d39-89fd-2a9fd932d933"
+Parent: "1eef70fd-5170-4d64-bdba-5ba2da1b6b24"
+Template: "1eef70fd-5170-4d64-bdba-5ba2da1b6b24"
+Path: "/sitecore/templates/Project/harness-engineering/Rendering Parameters/PromoCardGrid Parameters/__Standard Values"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20211012T120926Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\JssImport
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "51e6f97e-b107-40b7-bff7-e9b88bea753a"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\rob.earlam@sitecore.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20260520T050021Z

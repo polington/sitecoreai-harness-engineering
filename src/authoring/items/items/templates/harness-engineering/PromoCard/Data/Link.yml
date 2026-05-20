@@ -1,20 +1,18 @@
 ﻿---
-ID: "aff0c4c8-f307-4019-84e1-fa26221abe7e"
-Parent: "91a3e50d-5dba-41dd-9c18-bb251d30907f"
-Template: "5c547d4e-7111-4995-95b0-6b561751bf2e"
-Path: "/sitecore/layout/Placeholder Settings/Project/harness-engineering/headless-main"
+ID: "6fce33fc-1764-45f4-83b4-e5b80bf26c96"
+Parent: "ff7dfedf-d09e-4b53-921a-315e35134407"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: "/sitecore/templates/Project/harness-engineering/PromoCard/Data/Link"
 SharedFields:
-- ID: "7256bdab-1fd2-49dd-b205-cb4873d2917c"
-  Hint: Placeholder Key
-  Value: "headless-main"
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: General Link
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 400
 - ID: "dbbbeca1-21c7-4906-9dd2-493c1efa59a2"
   Hint: __Shared revision
-  Value: "ba441a4a-c1b8-4218-b5c5-ddf532bacb04"
-- ID: "e391b526-d0c5-439d-803e-17512eae6222"
-  Hint: Allowed Controls
-  Value: |
-    {FC88A1A0-3E05-4A3C-9FB1-F1408711B7CE}
-    {471FCF0A-E725-48B8-ADDE-201FEFA49184}
+  Value: "088d70c4-9db3-4827-87e5-c6494b0504ef"
 Languages:
 - Language: en
   Versions:
@@ -22,7 +20,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20260520T010136Z
+      Value: 20260520T045828Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
@@ -33,11 +31,11 @@ Languages:
         sitecore\rob.earlam@sitecore.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "87d69f2c-1fc1-4ce9-abc4-fb4f06aa6b35"
+      Value: "effbe8dc-4b4f-4d9a-b776-869bff648d34"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\rob.earlam@sitecore.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20260520T050330Z
+      Value: 20260520T045828Z
