@@ -1,3 +1,23 @@
+# OS files
 **/.DS_Store
+Thumbs.db
 
+# Editor directories
+.idea/
+*.swp
+*.swo
+
+# Environment files (may contain secrets)
+.env
+.env.local
+.env.*.local
+
+# Harness live state (regenerated per session)
 harness/run-state.md
+
+# Node
+node_modules/
+
+# Build outputs
+.next/
+out/
