@@ -34,13 +34,13 @@ Suggested status values:
 ---
 
 ### B003 — Site Footer
-**Status:** Ready for Spec  
+**Status:** Done  
 **Summary:** Implement a site footer component rendered in a `headless-footer` placeholder. Should display authored copyright text, secondary navigation links, and social media links from Sitecore fields.
 
 ---
 
 ### B004 — Hero Banner Component
-**Status:** Ready for Spec  
+**Status:** Done  
 **Summary:** Create a hero banner rendering component that displays an authored heading, subheading, background image, and optional call-to-action link. Should support full-width layout and be usable in the `headless-main` placeholder.
 
 ---
@@ -94,5 +94,5 @@ Suggested status values:
 ---
 
 ### B013 - Automated CI/CD Testing
-**Status:** Planned  
+**Status:** Done  
 **Summary:** Create GitHub Actions to run the tests built into the head application, to ensure that the code still functions when a PR is opened.
