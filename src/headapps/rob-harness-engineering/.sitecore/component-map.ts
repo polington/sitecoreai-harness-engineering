@@ -10,6 +10,8 @@ import * as footerSocialLinks from 'src/components/SiteFooter/footerSocialLinks'
 import * as footerNav from 'src/components/SiteFooter/footerNav';
 import * as footerLogo from 'src/components/SiteFooter/footerLogo';
 import * as SiteFooter from 'src/components/SiteFooter/SiteFooter';
+import * as heroBannerTypes from 'src/components/HeroBanner/heroBannerTypes';
+import * as HeroBanner from 'src/components/HeroBanner/HeroBanner';
 import * as headerTypes from 'src/components/Header/headerTypes';
 import * as headerNav from 'src/components/Header/headerNav';
 import * as headerLogo from 'src/components/Header/headerLogo';
@@ -25,6 +27,8 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['footerNav', { ...footerNav }],
   ['footerLogo', { ...footerLogo }],
   ['SiteFooter', { ...SiteFooter }],
+  ['heroBannerTypes', { ...heroBannerTypes }],
+  ['HeroBanner', { ...HeroBanner }],
   ['headerTypes', { ...headerTypes }],
   ['headerNav', { ...headerNav }],
   ['headerLogo', { ...headerLogo }],
