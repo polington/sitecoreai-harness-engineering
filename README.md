@@ -106,13 +106,13 @@ This repository includes configuration for multiple AI coding tools:
 
 | Tool | Configuration |
 |------|---------------|
-| GitHub Copilot (VS Code) | `.github/copilot-instructions.md`, `harness/roles/` |
-| GitHub Copilot Coding Agent | `.github/agents/` |
+| All agents (repo root) | `AGENTS.md` |
+| GitHub Copilot custom agents (VS Code) | `.github/agents/`, `harness/roles/` |
 | Cursor | `.cursor/rules/` |
-| Claude Code | `CLAUDE.md` |
-| Windsurf | `.windsurfrules` |
+| Claude Code | `.claude/commands/` |
+| Head app (Next.js) — all tools | `src/headapps/rob-harness-engineering/AGENTS.md`, `CLAUDE.md`, `.windsurfrules`, `.cursor/rules/`, `.agents/skills/` |
 
-The harness roles in `harness/roles/` define the core agent behaviours. The tool-specific configuration files adapt these roles to each tool's format.
+The harness roles in `harness/roles/` define the core agent behaviours for the stage workflow. The `.github/agents/`, `.cursor/rules/`, and `.claude/commands/` files are thin adapters that point back to those role definitions for each tool's format — they must be kept in sync manually. The root `AGENTS.md` is the entry point for any agent working across the whole repo; the head application has its own nested `AGENTS.md` that takes precedence when working inside it.
 
 ## License
 
