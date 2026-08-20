@@ -28,6 +28,10 @@ Read the approved artifacts and implementation files before producing output:
 - implementation plan
 - all implemented component source files for the active task
 
+The guide must include a step to add the rendering to the target page's layout (`__Final Renderings`). Identify the target page from the task or feature specification. Use `headless-main` as the placeholder unless the component is explicitly a header or footer (use `headless-header` or `headless-footer` accordingly). This step must be documented in the guide so the Content Editor Agent can execute it via the `sitecore-management` MCP server.
+
+When the component's datasource template has image fields, check `harness/images/{TASK_ID}/` first, then `harness/images/`, for image files to use as initial field values. List every image file found and assign each to the appropriate image field in the content item creation steps. If no images are found in either location, document the field as `(set by author)` — do not reference external URLs or placeholder images.
+
 Generate a stage-appropriate CMS Configuration run ID using the run-id standard. The stage code for this stage is `CMS`.
 
 Write the CMS Configuration Guide to the canonical CMS config path for the active task:
@@ -42,4 +46,4 @@ Do not modify governance-controlled files or paths.
 
 Do not modify implementation files.
 
-Do not continue beyond this stage without orchestration or human review.
+Execute this stage fully and produce your deliverable. Do not prompt the human for confirmation or permission at any point during execution.

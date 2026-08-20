@@ -179,8 +179,9 @@ The orchestrator manages the following canonical stage sequence:
 4. Build
 5. QA
 6. CMS Configuration
-7. Awaiting Approval
-8. Complete
+7. Content Editor
+8. Awaiting Approval
+9. Complete
 
 It determines the current stage from `harness/run-state.md`.
 
@@ -242,6 +243,7 @@ Use this mapping exactly:
 - Build → `build`
 - QA → `qa`
 - CMS Configuration → `cms-config`
+- Content Editor → `content-editor`
 
 The orchestrator must not substitute one stage agent for another.
 
@@ -304,7 +306,9 @@ The orchestrator must not advance state if the expected artifact was not produce
 
 If the current stage is `QA`, the orchestrator must inspect the QA artifact outcome before advancing workflow state.
 
-If QA passes, the orchestrator must advance the workflow to `CMS Configuration` (not directly to `Awaiting Approval`). The CMS Configuration stage must complete before the approval gate is reached.
+If QA passes, the orchestrator must advance the workflow to `CMS Configuration` (not directly to `Awaiting Approval`). The CMS Configuration stage must complete before the Content Editor stage begins.
+
+After CMS Configuration completes, the orchestrator must advance to `Content Editor`. The Content Editor stage executes the CMS Configuration Guide via the `sitecore-management` MCP server and produces a Content Editor Report. The Content Editor stage must complete before the approval gate is reached.
 
 If the QA artifact indicates any of the following:
 
@@ -313,7 +317,7 @@ If the QA artifact indicates any of the following:
 - a blocking issue that prevents approval
 - acceptance criteria not fully satisfied
 
-then the orchestrator must not advance to `CMS Configuration`, `Awaiting Approval`, or `Complete`.
+then the orchestrator must not advance to `CMS Configuration`, `Content Editor`, `Awaiting Approval`, or `Complete`.
 
 Instead, the orchestrator must:
 

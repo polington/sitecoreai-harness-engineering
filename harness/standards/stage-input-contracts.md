@@ -210,6 +210,35 @@ If the required input set is insufficient, the correct behavior is to escalate, 
 
 ---
 
+## Content Editor Stage Contract
+
+### Allowed Inputs
+
+- `harness/run-state.md`
+- active task file in `harness/tasks/`
+- approved active CMS Configuration Guide (`harness/artifacts/cms-config/TASKID-cms-config.md`)
+- `harness/roles/content-editor-agent.md`
+- `harness/templates/content-editor-report-template.md`
+- `harness/standards/feature-workflow.md`
+- `harness/standards/task-lifecycle.md`
+- `harness/standards/run-id-standard.md`
+- the `sitecore-management` MCP server (for live Sitecore operations)
+
+### Disallowed By Default
+
+- implementation source files (already consumed by the CMS Config agent)
+- QA reviews
+- design notes
+- prior task CMS config guides or content editor reports
+- broad repo searches
+- governance file editing
+
+### Expected Outputs
+
+- `harness/artifacts/content-editor/TASKID-content-editor-report.md`
+
+---
+
 ## Enforcement Expectations
 
 The orchestrator should:

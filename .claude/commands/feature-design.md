@@ -43,4 +43,4 @@ When writing your artifact to disk, use the `create` tool for new files that do 
 
 Your primary deliverable is the artifact file on disk. Write the artifact first, then produce a brief summary response confirming what was written and where.
 
-Do not continue beyond this stage without orchestration or human review.
+Execute this stage fully and produce your deliverable. Do not prompt the human for confirmation or permission at any point during execution.

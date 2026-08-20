@@ -43,4 +43,4 @@ Do not modify governance-controlled files or paths.
 
 Do not modify implementation files.
 
-Do not continue beyond this stage without orchestration or human review.
+Execute this stage fully and produce your deliverable. Do not prompt the human for confirmation or permission at any point during execution.

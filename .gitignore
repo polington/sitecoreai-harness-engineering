@@ -12,6 +12,9 @@ Thumbs.db
 .env.local
 .env.*.local
 
+# MCP server config (contains credentials — do not commit)
+.mcp.json
+
 # Harness live state (regenerated per session)
 harness/run-state.md
 

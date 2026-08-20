@@ -158,9 +158,17 @@ Reference to the datasource template from section 2.2.
 
 **Fields to populate:**
 
-| Field | Initial Value |
-|-------|---------------|
-| {FieldName} | Suggested initial value or `(set by author)` |
+| Field | Type | Initial Value |
+|-------|------|---------------|
+| {FieldName} | {FieldType} | Suggested initial value or `(set by author)` |
+
+> **Image fields:** For any field of type Image, specify the exact local file from `harness/images/{TASK_ID}/` or `harness/images/` and the target media library destination path. Example:
+>
+> | Field | Type | Initial Value |
+> |-------|------|---------------|
+> | `Image` | Image | Upload `harness/images/{TASK_ID}/teaser.jpg` → `Project/harness-engineering/{TASK_ID}/teaser` |
+>
+> If no suitable image exists in `harness/images`, set to `(set by author)` — do not reference external URLs.
 
 ### 6.2 {Supporting Item} *(repeat as needed)*
 
@@ -168,7 +176,44 @@ Repeat this section for supporting data items (e.g., navigation link items). Cre
 
 ---
 
-## 7. Serialization
+## 7. Add Rendering to Page
+
+Add the rendering to the target page's layout so it appears on the page immediately after CMS configuration is complete.
+
+**Target page:** `{page item path — e.g. /sitecore/content/{SiteCollection}/{SiteName}/Home}` *(Identify from the task or feature specification. Default to the site Home page if unspecified.)*
+
+**Placeholder:** `{placeholder-name}` — `headless-main` for standard page components; `headless-header` for header components; `headless-footer` for footer components only.
+
+**Steps:**
+
+1. Query the target page's current `__Final Renderings` field value via the `sitecore-management` MCP server (GraphQL query on the item's fields). Note the existing rendering entries and their `DynamicPlaceholderId` values.
+
+2. Append a new `<r>` element inside the `<d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">` device block with the following attributes:
+
+   | Attribute | Value |
+   |-----------|-------|
+   | `uid` | Generate a new GUID |
+   | `p:after` | `"*[1=2]"` |
+   | `s:id` | `{rendering-definition-guid}` — GUID of the rendering item from section 1 |
+   | `s:ds` | `{datasource-item-guid}` — GUID of the datasource item from section 6 (no curly braces) |
+   | `s:ph` | `{placeholder-name}` |
+   | `s:par` | `GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId={N}` where `{N}` is one higher than the current maximum |
+
+3. Update the `__Final Renderings` field on the target page item using `sitecore_update_item_fields` with the complete updated XML string.
+
+**Example `<r>` element (fill in actual GUIDs):**
+```xml
+<r uid="{NEW-GUID}" p:after="*[1=2]" s:ds="{datasource-item-guid}" s:id="{rendering-definition-guid}" s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId={N}" s:ph="{placeholder-name}" />
+```
+
+> If the page's `__Final Renderings` is currently empty, initialise the full XML wrapper:
+> ```xml
+> <r xmlns:p="p" xmlns:s="s" p:p="1"><d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">{new-r-element}</d></r>
+> ```
+
+---
+
+## 8. Serialization
 
 Read the serialization module file (typically `src/authoring/items/*.module.json`) and verify that every Sitecore path referenced in this guide is covered by an existing include entry. For each required path:
 
@@ -200,7 +245,7 @@ git commit -m "feat({TASK_ID}): serialize {ComponentName} CMS items"
 git push
 ```
 
-## 8. Post-Setup Validation
+## 9. Post-Setup Validation
 
 After completing the steps above, verify the configuration is working correctly.
 
@@ -212,6 +257,7 @@ After completing the steps above, verify the configuration is working correctly.
 - [ ] Data source item created and fields populated
 - [ ] `dotnet sitecore ser pull` completed without errors
 - [ ] Serialized items are committed to source control
+- [ ] Rendering appears in the target page's `__Final Renderings` field with correct rendering GUID, datasource GUID, and placeholder
 - [ ] Component renders in Experience Editor / Sitecore Pages at the expected placeholder
 - [ ] Component renders correctly with authored data
 - [ ] Navigation links display and link correctly

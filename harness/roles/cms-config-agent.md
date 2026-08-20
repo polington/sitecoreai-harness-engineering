@@ -103,7 +103,20 @@ Follow this process when producing a CMS Configuration Guide:
 
 10. Field names, template names, and component names must be taken directly from the implementation — do not invent or assume names not present in the source files.
 
-11. Write the guide to the canonical CMS config path defined by the task file and/or run-state.
+10a. Before documenting the content items section, check whether the datasource template has any image fields. If it does:
+    - Glob `harness/images/{TASK_ID}/` for image files. If that folder is absent or empty, glob `harness/images/` instead.
+    - For each image file found, record its relative path (`harness/images/...`) and assign it to the most appropriate image field in the guide's content item step.
+    - If multiple image files are found and multiple image fields exist, assign them by name similarity (e.g. a file named `hero.jpg` → the `Image` field used in a hero variant).
+    - If no images are found in either location, document the field as `(set by author)` — do not reference placeholder URLs or stock images.
+    - Document the harness image path explicitly in the guide so the Content Editor Agent knows the exact local file to upload.
+
+11. After the content items section, document a step to add the rendering to the target page's `__Final Renderings` layout field:
+    - Identify the target page from the task file or feature specification. If neither specifies a page, default to the site Home page.
+    - Determine the correct placeholder using the rule in the Precision Rules section below.
+    - The step must instruct the Content Editor Agent to: read the page's current `__Final Renderings` XML, append a new `<r>` element referencing the rendering GUID (from the rendering definition step), the datasource item GUID (from the content items step), the placeholder name, and a `DynamicPlaceholderId` value one higher than the existing maximum, then update the field via the MCP server.
+    - Document the full `s:par` attribute pattern and XML structure in the guide so the Content Editor Agent can execute it without interpretation.
+
+12. Write the guide to the canonical CMS config path defined by the task file and/or run-state.
 
 ---
 
@@ -122,6 +135,7 @@ The output must include:
 - placeholder settings update instructions
 - available renderings update instructions
 - content item creation instructions
+- page rendering assignment step (add rendering to the target page's `__Final Renderings`, specifying rendering GUID, datasource GUID, placeholder, and `DynamicPlaceholderId`)
 - serialization coverage verification (agent-executed — the agent reads the module JSON, checks all required paths, adds any missing includes directly, and documents the result; the human only needs to run `dotnet sitecore ser pull`)
 - post-setup validation steps
 
@@ -144,6 +158,37 @@ The agent must not produce the artifact content only in its response text. The f
 ## Precision Rules
 
 These rules exist to prevent known failure modes. Every rule below is mandatory.
+
+### Page rendering assignment — placeholder selection rule
+When documenting the step to add a rendering to a page's `__Final Renderings`, select the placeholder as follows:
+- Use `headless-main` for all standard page components (the default for any component not explicitly described as a header or footer element).
+- Use `headless-header` only when the task or feature specification explicitly describes a header component or a component that belongs inside the site header.
+- Use `headless-footer` only when the task or feature specification explicitly describes a footer component or a component that belongs inside the site footer.
+
+Do not use `headless-main` for header or footer components. Do not guess — if the task is ambiguous, default to `headless-main` and add an Open Item flagging the uncertainty.
+
+### Page rendering assignment — `__Final Renderings` XML pattern
+When the Content Editor Agent updates a page's `__Final Renderings` field, it must follow this exact pattern. Document it verbatim in the guide so the agent can execute it without interpretation.
+
+**To read the current value:** query the page item's `__Final Renderings` field via GraphQL.
+
+**To add a rendering:** append a new `<r>` element inside the `<d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">` device block. The device ID `{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}` is the default SXA headless device. Attributes required on the new element:
+
+| Attribute | Value |
+|-----------|-------|
+| `uid` | A newly generated GUID (unique per rendering instance) |
+| `p:after` | `"*[1=2]"` (no ordering constraint; use `p:before="*"` only if the rendering must be first) |
+| `s:id` | GUID of the rendering definition item |
+| `s:ds` | GUID of the datasource item (no curly braces in the attribute value) |
+| `s:ph` | Placeholder name (e.g. `headless-main`) |
+| `s:par` | `GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId={N}` where `{N}` is one higher than the current maximum `DynamicPlaceholderId` in the existing XML |
+
+**To update the field:** use `sitecore_update_item_fields` with field name `__Final Renderings` and the complete updated XML string.
+
+If the page's `__Final Renderings` is empty, initialise it with the full wrapper:
+```xml
+<r xmlns:p="p" xmlns:s="s" p:p="1"><d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}"><r uid="{NEW-GUID}" p:before="*" s:ds="{datasource-guid}" s:id="{rendering-guid}" s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames&amp;Styles&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1" s:ph="{placeholder}" /></d></r>
+```
 
 ### Available Renderings collection item type
 When instructing the developer to create a new collection inside the Available Renderings folder, the correct insert template is **Available Renderings** — not "Json Rendering collection item" or any other type. State this explicitly.
@@ -183,6 +228,16 @@ When writing a Datasource Location value, accurately describe what it does. A qu
 
 ### Summary item count — do not claim a fixed count for variable items
 If the number of items in the guide is variable (e.g. the developer creates one or more NavigationLink items), do not claim a fixed total count. State the fixed count separately from the variable count (e.g. "9 fixed items + variable NavigationLink items"). Do not use placeholder row indices like `7–N` in the summary table — state the fixed items explicitly and call out the variable items as "1 or more."
+
+### Image fields in datasource items — use `harness/images`
+When a datasource template has an Image field (or any field of type Image), the guide must specify which image file to use as the initial value — never leave it as a vague instruction like "select an image from the media library."
+
+**Lookup order:**
+1. Check `harness/images/{TASK_ID}/` for task-specific images (e.g. `harness/images/T006/teaser.jpg`).
+2. If that folder is absent or empty, check `harness/images/` for shared project images.
+3. If neither location contains relevant images, document the field as `(set by author)` — do not reference external URLs or placeholder images.
+
+**In the guide:** for each image file found, state the exact local path (`harness/images/...`) so the Content Editor Agent knows what to upload. State the target media library destination path: `/sitecore/media library/Project/harness-engineering/{TASK_ID}/{filename-without-extension}`. The Content Editor Agent will upload the file via `sitecore_upload_media` before creating the datasource item, then reference the resulting media item.
 
 ### Serialization coverage — include media library path
 If the implementation requires the developer to upload or select a media item (e.g. a logo image), include the media library path in the serialization coverage table. The standard media include in this project covers `/sitecore/media library/Project/harness-engineering`. Instruct the developer to store logo and other project media assets under this path so they are captured by `dotnet sitecore ser pull`.

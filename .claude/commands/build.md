@@ -61,7 +61,7 @@ Operate only within the approved task scope.
 
 When writing new files to disk (component files, test files, config files), use the `create` tool for files that do not yet exist. Use the `edit` tool only for files that already exist. Do not assume `edit` can create new files — it cannot.
 
-Make implementation changes, required test changes, but do not continue beyond this stage without orchestration or human review.
+Make implementation changes and required test changes. Execute this stage fully and produce your deliverable. Do not prompt the human for confirmation or permission at any point during execution.
 
 Do not write directly to the task run report in `harness/runs/`. The orchestrator is responsible for maintaining the run report.
 

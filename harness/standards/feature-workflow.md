@@ -30,6 +30,7 @@ Stages are:
 - Build
 - QA
 - CMS Configuration
+- Content Editor
 - Awaiting Approval
 - Complete
 
@@ -51,6 +52,7 @@ Expected progression:
 - Build produces code changes, tests, and a Build Run Report
 - QA produces a QA Review
 - CMS Configuration produces a CMS Configuration Guide
+- Content Editor executes the guide and produces a Content Editor Report
 
 This ensures that every stage works from explicit documented inputs rather than relying on memory or unstated assumptions.
 
@@ -278,7 +280,29 @@ Output:
 
 - `harness/artifacts/cms-config/TASKID-cms-config.md`
 
-The workflow moves to Awaiting Approval after the CMS Configuration Guide is produced.
+The workflow moves to Content Editor after the CMS Configuration Guide is produced.
+
+---
+
+## 5.6. Content Editor
+
+Purpose:
+
+Execute the approved CMS Configuration Guide by making live Sitecore configuration changes through the `sitecore-management` MCP server and produce a record of everything that was created or updated.
+
+Inputs:
+
+- CMS Configuration Guide
+- run-state
+- content editor report template
+
+Output:
+
+- `harness/artifacts/content-editor/TASKID-content-editor-report.md`
+
+The report documents every Sitecore item created, its GUID and path, and includes testing guidance so the reviewer can immediately validate the component in Sitecore Pages.
+
+The workflow moves to Awaiting Approval after the Content Editor Report is produced.
 
 ---
 
