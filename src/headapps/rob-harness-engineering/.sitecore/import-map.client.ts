@@ -9,13 +9,17 @@ import {
 // end of built-in imports
 
 import { jsx, jsxs, Fragment } from 'react/jsx-runtime';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import HeaderLogo from 'src/components/Header/headerLogo';
 import HeaderNav from 'src/components/Header/headerNav';
 import client from 'src/lib/sitecore-client';
 import { CdpHelper, useSitecore } from '@sitecore-content-sdk/nextjs';
 import { pageView } from '@sitecore-content-sdk/events';
 import config from 'sitecore.config';
+import CarouselPanel from 'src/components/Carousel/carouselPanel';
+import CarouselControls from 'src/components/Carousel/carouselControls';
+import CarouselIndicators from 'src/components/Carousel/carouselIndicators';
+import AccordionItem from 'src/components/Accordion/accordionItem';
 
 const importMap = [
   {
@@ -31,6 +35,8 @@ const importMap = [
     exports: [
       { name: 'useState', value: useState },
       { name: 'useEffect', value: useEffect },
+      { name: 'useCallback', value: useCallback },
+      { name: 'useRef', value: useRef },
     ]
   },
   {
@@ -68,6 +74,30 @@ const importMap = [
     module: 'sitecore.config',
     exports: [
       { name: 'default', value: config },
+    ]
+  },
+  {
+    module: 'src/components/Carousel/carouselPanel',
+    exports: [
+      { name: 'default', value: CarouselPanel },
+    ]
+  },
+  {
+    module: 'src/components/Carousel/carouselControls',
+    exports: [
+      { name: 'default', value: CarouselControls },
+    ]
+  },
+  {
+    module: 'src/components/Carousel/carouselIndicators',
+    exports: [
+      { name: 'default', value: CarouselIndicators },
+    ]
+  },
+  {
+    module: 'src/components/Accordion/accordionItem',
+    exports: [
+      { name: 'default', value: AccordionItem },
     ]
   }
 ] as ImportEntry[];

@@ -28,6 +28,9 @@ import * as carouselPanel from 'src/components/Carousel/carouselPanel';
 import * as carouselIndicators from 'src/components/Carousel/carouselIndicators';
 import * as carouselControls from 'src/components/Carousel/carouselControls';
 import * as Carousel from 'src/components/Carousel/Carousel';
+import * as accordionTypes from 'src/components/Accordion/accordionTypes';
+import * as accordionItem from 'src/components/Accordion/accordionItem';
+import * as Accordion from 'src/components/Accordion/Accordion';
 
 export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['BYOCWrapper', BYOCServerWrapper],
@@ -57,6 +60,9 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['carouselIndicators', { ...carouselIndicators }],
   ['carouselControls', { ...carouselControls }],
   ['Carousel', { ...Carousel, componentType: 'client' }],
+  ['accordionTypes', { ...accordionTypes }],
+  ['accordionItem', { ...accordionItem }],
+  ['Accordion', { ...Accordion, componentType: 'client' }],
 ]);
 
 export default componentMap;

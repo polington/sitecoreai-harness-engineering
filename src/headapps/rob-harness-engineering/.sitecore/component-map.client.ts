@@ -5,6 +5,7 @@ import { Form } from '@sitecore-content-sdk/nextjs';
 
 import * as Header from 'src/components/Header/Header';
 import * as Carousel from 'src/components/Carousel/Carousel';
+import * as Accordion from 'src/components/Accordion/Accordion';
 
 export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['BYOCWrapper', BYOCClientWrapper],
@@ -12,6 +13,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['Form', Form],
   ['Header', { ...Header }],
   ['Carousel', { ...Carousel }],
+  ['Accordion', { ...Accordion }],
 ]);
 
 export default componentMap;
