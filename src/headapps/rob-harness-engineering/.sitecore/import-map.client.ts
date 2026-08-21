@@ -8,22 +8,41 @@ import {
 } from '@sitecore-content-sdk/nextjs/codegen';
 // end of built-in imports
 
-import { jsx, Fragment, jsxs } from 'react/jsx-runtime';
-import client from 'src/lib/sitecore-client';
-import { CdpHelper, useSitecore } from '@sitecore-content-sdk/nextjs';
-import { useEffect, useState } from 'react';
-import { pageView } from '@sitecore-content-sdk/events';
-import config from 'sitecore.config';
+import { jsx, jsxs, Fragment } from 'react/jsx-runtime';
+import { useState, useEffect } from 'react';
 import HeaderLogo from 'src/components/Header/headerLogo';
 import HeaderNav from 'src/components/Header/headerNav';
+import client from 'src/lib/sitecore-client';
+import { CdpHelper, useSitecore } from '@sitecore-content-sdk/nextjs';
+import { pageView } from '@sitecore-content-sdk/events';
+import config from 'sitecore.config';
 
 const importMap = [
   {
     module: 'react/jsx-runtime',
     exports: [
       { name: 'jsx', value: jsx },
-      { name: 'Fragment', value: Fragment },
       { name: 'jsxs', value: jsxs },
+      { name: 'Fragment', value: Fragment },
+    ]
+  },
+  {
+    module: 'react',
+    exports: [
+      { name: 'useState', value: useState },
+      { name: 'useEffect', value: useEffect },
+    ]
+  },
+  {
+    module: 'src/components/Header/headerLogo',
+    exports: [
+      { name: 'default', value: HeaderLogo },
+    ]
+  },
+  {
+    module: 'src/components/Header/headerNav',
+    exports: [
+      { name: 'default', value: HeaderNav },
     ]
   },
   {
@@ -40,13 +59,6 @@ const importMap = [
     ]
   },
   {
-    module: 'react',
-    exports: [
-      { name: 'useEffect', value: useEffect },
-      { name: 'useState', value: useState },
-    ]
-  },
-  {
     module: '@sitecore-content-sdk/events',
     exports: [
       { name: 'pageView', value: pageView },
@@ -56,18 +68,6 @@ const importMap = [
     module: 'sitecore.config',
     exports: [
       { name: 'default', value: config },
-    ]
-  },
-  {
-    module: 'src/components/Header/headerLogo',
-    exports: [
-      { name: 'default', value: HeaderLogo },
-    ]
-  },
-  {
-    module: 'src/components/Header/headerNav',
-    exports: [
-      { name: 'default', value: HeaderNav },
     ]
   }
 ] as ImportEntry[];

@@ -50,6 +50,7 @@ Use this exact stage-to-agent mapping:
 - Build → `/build`
 - QA → `/qa`
 - CMS Configuration → `/cms-config`
+- Content Editor → `/content-editor`
 
 Do not use one stage agent to perform another stage's responsibility.
 

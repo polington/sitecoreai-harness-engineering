@@ -7,15 +7,17 @@ import {
 } from '@sitecore-content-sdk/nextjs/codegen';
 // end of built-in imports
 
-import { jsx, jsxs } from 'react/jsx-runtime';
-import React from 'react';
-import componentMap from '.sitecore/component-map';
-import { AppPlaceholder, Link, Image } from '@sitecore-content-sdk/nextjs';
-import NextLink from 'next/link';
+import { jsx, jsxs, Fragment } from 'react/jsx-runtime';
+import { Image, Link, RichText, AppPlaceholder } from '@sitecore-content-sdk/nextjs';
+import TeaserImage from 'src/components/Teaser/teaserImage';
+import TeaserActions from 'src/components/Teaser/teaserActions';
 import FooterLogo from 'src/components/SiteFooter/footerLogo';
 import FooterNav from 'src/components/SiteFooter/footerNav';
 import FooterSocialLinks from 'src/components/SiteFooter/footerSocialLinks';
+import NextLink from 'next/link';
 import PromoCard from 'src/components/PromoCardGrid/promoCard';
+import React from 'react';
+import componentMap from '.sitecore/component-map';
 
 const importMap = [
   {
@@ -23,32 +25,28 @@ const importMap = [
     exports: [
       { name: 'jsx', value: jsx },
       { name: 'jsxs', value: jsxs },
-    ]
-  },
-  {
-    module: 'react',
-    exports: [
-      { name: 'default', value: React },
-    ]
-  },
-  {
-    module: '.sitecore/component-map',
-    exports: [
-      { name: 'default', value: componentMap },
+      { name: 'Fragment', value: Fragment },
     ]
   },
   {
     module: '@sitecore-content-sdk/nextjs',
     exports: [
-      { name: 'AppPlaceholder', value: AppPlaceholder },
-      { name: 'Link', value: Link },
       { name: 'Image', value: Image },
+      { name: 'Link', value: Link },
+      { name: 'RichText', value: RichText },
+      { name: 'AppPlaceholder', value: AppPlaceholder },
     ]
   },
   {
-    module: 'next/link',
+    module: 'src/components/Teaser/teaserImage',
     exports: [
-      { name: 'default', value: NextLink },
+      { name: 'default', value: TeaserImage },
+    ]
+  },
+  {
+    module: 'src/components/Teaser/teaserActions',
+    exports: [
+      { name: 'default', value: TeaserActions },
     ]
   },
   {
@@ -70,9 +68,27 @@ const importMap = [
     ]
   },
   {
+    module: 'next/link',
+    exports: [
+      { name: 'default', value: NextLink },
+    ]
+  },
+  {
     module: 'src/components/PromoCardGrid/promoCard',
     exports: [
       { name: 'default', value: PromoCard },
+    ]
+  },
+  {
+    module: 'react',
+    exports: [
+      { name: 'default', value: React },
+    ]
+  },
+  {
+    module: '.sitecore/component-map',
+    exports: [
+      { name: 'default', value: componentMap },
     ]
   }
 ] as ImportEntry[];

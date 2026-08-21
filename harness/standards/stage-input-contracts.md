@@ -1,3 +1,4 @@
+
 # Stage Input Contracts
 
 ## Purpose

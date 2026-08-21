@@ -280,7 +280,7 @@ Output:
 
 - `harness/artifacts/cms-config/TASKID-cms-config.md`
 
-The workflow moves to Content Editor after the CMS Configuration Guide is produced.
+The workflow moves to Content Editor after the CMS Configuration Guide is produced, unless `Require Approval Before Content Editor` is set, in which case the orchestrator stops for human review before invoking the Content Editor stage.
 
 ---
 
@@ -417,6 +417,7 @@ This loop improves efficiency but does not replace the broader workflow controls
 Run-state may define approval gates such as:
 
 - Require Approval Before Build
+- Require Approval Before Content Editor
 - Require Approval Before Complete
 
 These gates allow the workflow to become more autonomous over time without sacrificing control.

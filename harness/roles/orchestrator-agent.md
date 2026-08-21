@@ -457,10 +457,10 @@ After each stage completes, the orchestrator must update the run report's Valida
 
 ### Per-Stage Evidence Requirements
 
-**Specification, Design, Implementation Planning, CMS Configuration:**
+**Specification, Design, Implementation Planning, CMS Configuration, Content Editor:**
 
 - Artifact path and file size confirmation
-- Brief content summary (e.g., number of acceptance criteria, key decisions)
+- Brief content summary (e.g., number of acceptance criteria, key decisions; for Content Editor: items created, publish operation IDs)
 
 **Build:**
 
@@ -486,6 +486,7 @@ The orchestrator must obey approval settings recorded in run-state.
 Expected approval settings include:
 
 - Require Approval Before Build
+- Require Approval Before Content Editor
 - Require Approval Before Complete
 
 If a configured approval gate is reached, the orchestrator must stop and record the reason.

@@ -36,6 +36,7 @@ Run Report: {{RUN_REPORT_PATH}}
 ## Approval Mode
 
 Require Approval Before Build: {{REQUIRE_APPROVAL_BEFORE_BUILD}}  
+Require Approval Before Content Editor: {{REQUIRE_APPROVAL_BEFORE_CONTENT_EDITOR}}  
 Require Approval Before Complete: {{REQUIRE_APPROVAL_BEFORE_COMPLETE}}
 
 ---

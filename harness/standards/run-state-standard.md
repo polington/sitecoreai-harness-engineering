@@ -99,6 +99,7 @@ Expected stages are:
 - Build
 - QA
 - CMS Configuration
+- Content Editor
 - Awaiting Approval
 - Complete
 

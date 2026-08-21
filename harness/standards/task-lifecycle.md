@@ -28,8 +28,9 @@ A task moves through the following lifecycle stages:
 4. Build
 5. QA
 6. CMS Configuration
-7. Awaiting Approval
-8. Complete
+7. Content Editor
+8. Awaiting Approval
+9. Complete
 
 These stages represent the canonical workflow of the harness.
 
@@ -249,7 +250,36 @@ The CMS Configuration Guide describes:
 - content item creation steps
 - serialization and validation steps
 
-The next lifecycle stage after successful CMS Configuration is **Awaiting Approval**.
+The next lifecycle stage after successful CMS Configuration is **Content Editor**.
+
+---
+
+## Content Editor
+
+Purpose:
+
+Execute the approved CMS Configuration Guide by making live Sitecore configuration changes through the `sitecore-management` MCP server and produce a record of everything that was created or updated.
+
+Primary artifact:
+
+```
+Content Editor Report
+```
+
+Expected output:
+
+```
+harness/artifacts/content-editor/TASKID-content-editor-report.md
+```
+
+The Content Editor Report documents:
+
+- every Sitecore item created or updated (path, GUID, field values)
+- publish operation IDs
+- post-setup validation results
+- testing guidance for the reviewer
+
+The next lifecycle stage after a successful Content Editor run is **Awaiting Approval**.
 
 ---
 
@@ -301,7 +331,7 @@ The run-state should record the final lifecycle stage as **Complete**.
 Lifecycle progression should follow the canonical stage order:
 
 ```
-Specification → Design → Implementation Planning → Build → QA → CMS Configuration → Awaiting Approval → Complete
+Specification → Design → Implementation Planning → Build → QA → CMS Configuration → Content Editor → Awaiting Approval → Complete
 ```
 
 Stages must not be skipped.
@@ -332,6 +362,7 @@ RUN-2026-03-16-T002-PLAN
 RUN-2026-03-16-T002-BUILD
 RUN-2026-03-16-T002-QA
 RUN-2026-03-16-T002-CMS
+RUN-2026-03-16-T002-EDIT
 ```
 
 The run ID should be recorded in:
