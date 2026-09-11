@@ -189,6 +189,12 @@ describe('Accordion', () => {
     expect(button.className).toContain('focus-visible');
   });
 
+  it('header button has hover styling class', () => {
+    render(<Accordion fields={{ Items: ITEMS }} />);
+    const button = screen.getAllByRole('button')[0];
+    expect(button.className).toContain('hover:opacity-75');
+  });
+
   it('keyboard: Space key activates header button via click', () => {
     render(<Accordion fields={{ Items: ITEMS }} />);
     const button = screen.getAllByRole('button')[0];

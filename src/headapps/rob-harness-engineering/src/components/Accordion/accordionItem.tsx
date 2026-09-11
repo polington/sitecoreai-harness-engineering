@@ -22,7 +22,7 @@ export default function AccordionItem({ id, panelId, fields, isOpen, headingLeve
           aria-expanded={isOpen}
           aria-controls={panelId}
           onClick={() => onToggle(id)}
-          className="w-full flex justify-between items-start py-4 px-0 text-left font-bold uppercase text-lg hover:opacity-75 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
+          className="w-full flex justify-between items-start py-4 px-0 text-left font-bold uppercase text-xl hover:opacity-75 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
         >
           <span>{fields?.Title?.value}</span>
           <span aria-hidden="true" className="ml-4 flex-shrink-0 font-normal">{isOpen ? '\u2212' : '+'}</span>
@@ -34,6 +34,7 @@ export default function AccordionItem({ id, panelId, fields, isOpen, headingLeve
         role="region"
         aria-labelledby={headerId}
         aria-hidden={!isOpen}
+        {...(!isOpen ? { inert: true } : {})}
         className={`grid transition-all duration-200 ease-in-out ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
       >
         <div className="overflow-hidden">

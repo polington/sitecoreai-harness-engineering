@@ -11,10 +11,10 @@ Task File: harness/tasks/T008-accordion-component.md
 ## Run
 
 Run Report ID: T008-run-report  
-Current Stage: Awaiting Approval Before Complete  
-Current Run ID: RUN-2026-08-21-T008-EDIT
+Current Stage: Fix and Deploy  
+Current Run ID: RUN-2026-09-11-T008-FIX
 
-Overall Status: Paused — Awaiting Approval
+Overall Status: Active
 
 ---
 
@@ -29,6 +29,8 @@ Overall Status: Paused — Awaiting Approval
 | QA | RUN-2026-08-21-T008-QA | Complete | 2026-08-21 |
 | CMS Configuration | RUN-2026-08-21-T008-CMS | Complete | 2026-08-21 |
 | Content Editor | RUN-2026-08-21-T008-EDIT | Complete | 2026-08-21 |
+| Code Review | RUN-2026-09-11-T008-REVIEW | Complete | 2026-09-11 |
+| Fix and Deploy | RUN-2026-09-11-T008-FIX | In Progress | 2026-09-11 |
 
 ---
 
@@ -37,7 +39,9 @@ Overall Status: Paused — Awaiting Approval
 Feature Specification: harness/artifacts/specs/T008-feature-spec.md  
 Design Note: harness/artifacts/design/T008-design-note.md  
 Implementation Plan: harness/artifacts/plans/T008-implementation-plan.md  
-QA Review: harness/artifacts/qa/T008-qa-review.md
+QA Review: harness/artifacts/qa/T008-qa-review.md  
+Code Review: harness/artifacts/code-review/T008-code-review.md  
+Fix and Deploy Report: harness/artifacts/fix-deploy/T008-fix-deploy-report.md
 
 ---
 
@@ -94,8 +98,8 @@ QA Review: harness/artifacts/qa/T008-qa-review.md
 
 ## Stop / Pause State
 
-Stop Reason: Approval gate — Require Approval Before Complete  
-Next Expected Action: Human reviewer approves task T008 as complete
+Stop Reason: None — workflow active  
+Next Expected Action: Fix and Deploy in progress (RUN-2026-09-11-T008-FIX)
 
 ---
 
@@ -111,6 +115,17 @@ Next Expected Action: Human reviewer approves task T008 as complete
 
 ---
 
+### Code Review — RUN-2026-09-11-T008-REVIEW
+
+- Artifact: `harness/artifacts/code-review/T008-code-review.md` — exists, non-empty
+- Total findings: 0 Critical, 1 Major, 2 Minor
+- Major: Finding 1 — Collapsed panel not removed from keyboard tab order (`accordionItem.tsx` ~line 33); fix: add `inert` attribute spread
+- Minor: Finding 2 — Title `text-lg` (18px) below H4 target; fix: change to `text-xl` (20px) in `accordionItem.tsx` ~line 25
+- Minor: Finding 3 — No hover test; AC 26 requires it; fix: add class-presence test in `Accordion.test.tsx`
+- Approval Recommendation: **Proceed to Fix and Deploy**
+
+---
+
 ## Notes
 
-Run initialized by orchestrator on 2026-08-21. Approval gates: Before Build, Before Content Editor, Before Complete.
+Run initialized by orchestrator on 2026-08-21. Approval gates: Before Build, Before Content Editor, Before Complete. Resumed by orchestrator on 2026-09-11 to run Code Review and Fix and Deploy — stages added to harness workflow after T008's original run.
