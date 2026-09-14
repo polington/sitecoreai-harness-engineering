@@ -31,6 +31,8 @@ Stages are:
 - QA
 - CMS Configuration
 - Content Editor
+- Code Review
+- Fix and Deploy
 - Awaiting Approval
 - Complete
 
@@ -53,6 +55,8 @@ Expected progression:
 - QA produces a QA Review
 - CMS Configuration produces a CMS Configuration Guide
 - Content Editor executes the guide and produces a Content Editor Report
+- Code Review produces a Code Review artifact with findings and suggested fixes
+- Fix and Deploy applies those fixes, validates, commits, and pushes to origin
 
 This ensures that every stage works from explicit documented inputs rather than relying on memory or unstated assumptions.
 
@@ -302,7 +306,60 @@ Output:
 
 The report documents every Sitecore item created, its GUID and path, and includes testing guidance so the reviewer can immediately validate the component in Sitecore Pages.
 
-The workflow moves to Awaiting Approval after the Content Editor Report is produced.
+The workflow moves to Code Review after the Content Editor Report is produced.
+
+---
+
+## 5.7. Code Review
+
+Purpose:
+
+Review the code produced by the Build Agent against the approved specification, design note, implementation plan, and QA Review. Identify issues and propose a concrete fix for each one.
+
+Inputs:
+
+- feature specification
+- design note
+- implementation plan
+- QA Review
+- implemented source files for the active task
+- run-state
+- code review template
+
+Output:
+
+- `harness/artifacts/code-review/TASKID-code-review.md`
+
+The Code Review artifact includes an Approval Recommendation field.
+
+If the recommendation is `Proceed to Fix and Deploy`, the workflow moves to Fix and Deploy.
+
+If the recommendation is `Back to Build`, the orchestrator returns the task to Build for remediation. After Build completes, Code Review runs again. The orchestrator may repeat this loop up to 2 times before setting the task to Blocked.
+
+CMS Configuration and Content Editor are not re-run during a Code Review remediation loop — only Build and Code Review repeat.
+
+---
+
+## 5.8. Fix and Deploy
+
+Purpose:
+
+Apply the fixes proposed in the approved Code Review artifact, validate the result, commit all changes, and push to origin. Pushing to origin triggers deployment.
+
+Inputs:
+
+- Code Review artifact (`harness/artifacts/code-review/TASKID-code-review.md`)
+- implemented source files for the active task
+- run-state
+- fix and deploy report template
+
+Output:
+
+- `harness/artifacts/fix-deploy/TASKID-fix-deploy-report.md`
+
+The Fix and Deploy Report records the fixes applied, validation results, commit SHA, and push confirmation.
+
+The workflow moves to Awaiting Approval after a successful push, unless `Require Approval Before Fix and Deploy` is set, in which case the orchestrator stops for human review before invoking this stage.
 
 ---
 
@@ -452,7 +509,7 @@ This makes the workflow resumable and inspectable.
 
 ## Summary
 
-The feature workflow defines how a task moves through Specification, Design, Planning, Build, QA, Approval, and Completion.
+The feature workflow defines how a task moves through Specification, Design, Planning, Build, QA, CMS Configuration, Content Editor, Code Review, Fix and Deploy, Approval, and Completion.
 
 The workflow is:
 

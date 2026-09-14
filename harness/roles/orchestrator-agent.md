@@ -180,8 +180,10 @@ The orchestrator manages the following canonical stage sequence:
 5. QA
 6. CMS Configuration
 7. Content Editor
-8. Awaiting Approval
-9. Complete
+8. Code Review
+9. Fix and Deploy
+10. Awaiting Approval
+11. Complete
 
 It determines the current stage from `harness/run-state.md`.
 
@@ -244,6 +246,8 @@ Use this mapping exactly:
 - QA → `qa`
 - CMS Configuration → `cms-config`
 - Content Editor → `content-editor`
+- Code Review → `code-review`
+- Fix and Deploy → `fix-deploy`
 
 The orchestrator must not substitute one stage agent for another.
 
@@ -308,7 +312,13 @@ If the current stage is `QA`, the orchestrator must inspect the QA artifact outc
 
 If QA passes, the orchestrator must advance the workflow to `CMS Configuration` (not directly to `Awaiting Approval`). The CMS Configuration stage must complete before the Content Editor stage begins.
 
-After CMS Configuration completes, the orchestrator must advance to `Content Editor`. The Content Editor stage executes the CMS Configuration Guide via the `sitecore-management` MCP server and produces a Content Editor Report. The Content Editor stage must complete before the approval gate is reached.
+After CMS Configuration completes, the orchestrator must advance to `Content Editor`. The Content Editor stage executes the CMS Configuration Guide via the `sitecore-management` MCP server and produces a Content Editor Report. The Content Editor stage must complete before the Code Review stage begins.
+
+After Content Editor completes, the orchestrator must advance to `Code Review`.
+
+After Code Review completes with `Approval Recommendation: Proceed to Fix and Deploy`, the orchestrator must check for `Require Approval Before Fix and Deploy`. If that gate is set, the orchestrator must stop for human review before invoking Fix and Deploy. Otherwise, the orchestrator must advance to `Fix and Deploy`.
+
+After Fix and Deploy completes, the orchestrator must advance to `Awaiting Approval` and stop for human review before marking the task Complete.
 
 If the QA artifact indicates any of the following:
 
@@ -317,7 +327,7 @@ If the QA artifact indicates any of the following:
 - a blocking issue that prevents approval
 - acceptance criteria not fully satisfied
 
-then the orchestrator must not advance to `CMS Configuration`, `Content Editor`, `Awaiting Approval`, or `Complete`.
+then the orchestrator must not advance to `CMS Configuration`, `Content Editor`, `Code Review`, `Fix and Deploy`, `Awaiting Approval`, or `Complete`.
 
 Instead, the orchestrator must:
 
@@ -343,6 +353,45 @@ If QA still reports blocking issues after the remediation retry limit is reached
 - set `Current Status` to `Blocked`
 - keep `Current Stage` at `QA`
 - set `Stop Reason` to `QA remediation retry limit reached`
+- update the run report
+- halt for human review
+
+---
+
+## Code Review Remediation Loop
+
+If the current stage is `Code Review`, the orchestrator must inspect the Code Review artifact outcome before advancing workflow state.
+
+If the Code Review artifact contains `Approval Recommendation: Proceed to Fix and Deploy`, the orchestrator must advance to `Fix and Deploy`.
+
+If the Code Review artifact contains `Approval Recommendation: Back to Build`, the orchestrator must not advance to `Fix and Deploy`, `Awaiting Approval`, or `Complete`.
+
+Instead, the orchestrator must:
+
+1. Update `harness/run-state.md` so that:
+   - `Current Stage` = `Build`
+   - `Current Status` = `Active`
+   - `Stop Reason` is cleared if the task is being actively remediated
+   - `Notes` records that Code Review returned the task to Build for remediation
+
+2. Update the run report with:
+   - the Code Review outcome
+   - the reason the task was returned to Build
+   - the specific blocking findings
+
+3. Invoke the Build Agent again using the active task context plus the Code Review artifact as remediation input.
+
+4. After Build completes, invoke Code Review again.
+
+The orchestrator may repeat this Code Review → Build → Code Review remediation loop up to 2 times after the initial Code Review failure.
+
+CMS Configuration and Content Editor are not re-run during this remediation loop — only Build and Code Review repeat.
+
+If Code Review still returns `Back to Build` after the remediation retry limit is reached, the orchestrator must:
+
+- set `Current Status` to `Blocked`
+- keep `Current Stage` at `Code Review`
+- set `Stop Reason` to `Code Review remediation retry limit reached`
 - update the run report
 - halt for human review
 
@@ -383,6 +432,10 @@ Follow this exact process when orchestrating a task:
 
 9. If the completed stage is `QA`, apply the QA Remediation Loop rules before advancing workflow state.
 
+   If the completed stage is `Code Review`, apply the Code Review Remediation Loop rules before advancing workflow state.
+
+   If the completed stage is `Fix and Deploy`, check for `Require Approval Before Complete` and stop at that gate, or advance to `Awaiting Approval`.
+
 10. If the completed stage passes normally:
    - record the completed stage
    - advance run-state
@@ -391,6 +444,7 @@ Follow this exact process when orchestrating a task:
    - an approval gate is reached
    - a stage fails or becomes blocked
    - QA returns the task to Build for remediation
+   - Code Review returns the task to Build for remediation
    - the user explicitly requested a bounded orchestration test
 
 12. If stage invocation fails because the runtime cannot dispatch the mapped subagent:
@@ -477,6 +531,20 @@ After each stage completes, the orchestrator must update the run report's Valida
 - Number of issues identified and their severity
 - Approval readiness recommendation
 
+**Code Review:**
+
+- Artifact path and file size confirmation
+- Total findings by severity (Critical / Major / Minor)
+- Approval Recommendation recorded verbatim (`Proceed to Fix and Deploy` or `Back to Build`)
+
+**Fix and Deploy:**
+
+- Artifact path and file size confirmation
+- Number of fixes applied
+- Validation results (lint and build pass/fail)
+- Commit SHA
+- Push result and remote ref updated
+
 ---
 
 ## Approval Gates
@@ -487,6 +555,7 @@ Expected approval settings include:
 
 - Require Approval Before Build
 - Require Approval Before Content Editor
+- Require Approval Before Fix and Deploy
 - Require Approval Before Complete
 
 If a configured approval gate is reached, the orchestrator must stop and record the reason.
@@ -510,6 +579,7 @@ The orchestrator must stop when:
 - the task is already Complete
 - a stage cannot proceed within its declared input contract
 - QA remediation retry limit is reached
+- Code Review remediation retry limit is reached
 
 When stopping, it must update run-state and the run report clearly.
 

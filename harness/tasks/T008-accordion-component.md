@@ -1,6 +1,6 @@
 # Task T008 — Accordion Component
 
-Status: Active  
+Status: Complete  
 Backlog Item: B006  
 Created: 2026-08-21
 

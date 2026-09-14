@@ -29,6 +29,10 @@ Feature Specification: {{FEATURE_SPEC_PATH}}
 Design Note: {{DESIGN_NOTE_PATH}}  
 Implementation Plan: {{IMPLEMENTATION_PLAN_PATH}}  
 QA Review: {{QA_REVIEW_PATH}}  
+CMS Configuration Guide: {{CMS_CONFIG_PATH}}  
+Content Editor Report: {{CONTENT_EDITOR_REPORT_PATH}}  
+Code Review: {{CODE_REVIEW_PATH}}  
+Fix and Deploy Report: {{FIX_DEPLOY_REPORT_PATH}}  
 Run Report: {{RUN_REPORT_PATH}}
 
 ---
@@ -37,6 +41,7 @@ Run Report: {{RUN_REPORT_PATH}}
 
 Require Approval Before Build: {{REQUIRE_APPROVAL_BEFORE_BUILD}}  
 Require Approval Before Content Editor: {{REQUIRE_APPROVAL_BEFORE_CONTENT_EDITOR}}  
+Require Approval Before Fix and Deploy: {{REQUIRE_APPROVAL_BEFORE_FIX_AND_DEPLOY}}  
 Require Approval Before Complete: {{REQUIRE_APPROVAL_BEFORE_COMPLETE}}
 
 ---

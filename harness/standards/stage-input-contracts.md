@@ -199,6 +199,7 @@ If the required input set is insufficient, the correct behavior is to escalate, 
 - `harness/standards/feature-workflow.md`
 - `harness/standards/task-lifecycle.md`
 - `harness/standards/run-id-standard.md`
+- `harness/standards/xmcloud-component-creation.md`
 - the implemented component source files for the active task
 
 ### Disallowed By Default
@@ -208,6 +209,7 @@ If the required input set is insufficient, the correct behavior is to escalate, 
 - design notes
 - broad repo searches beyond the component source files
 - governance file editing
+- live web fetches for the Accelerate Cookbook recipe (use `xmcloud-component-creation.md` instead)
 
 ---
 
@@ -237,6 +239,70 @@ If the required input set is insufficient, the correct behavior is to escalate, 
 ### Expected Outputs
 
 - `harness/artifacts/content-editor/TASKID-content-editor-report.md`
+
+---
+
+## Code Review Stage Contract
+
+### Allowed Inputs
+
+- `harness/run-state.md`
+- active task file in `harness/tasks/`
+- approved active feature specification
+- approved active design note
+- approved active implementation plan
+- approved active QA Review
+- `harness/roles/code-review-agent.md`
+- `harness/templates/code-review-template.md`
+- `harness/standards/feature-workflow.md`
+- `harness/standards/task-lifecycle.md`
+- `harness/standards/run-id-standard.md`
+- `harness/standards/coding-standard.md`
+- the implementation files and tests relevant to the active task
+
+### Disallowed By Default
+
+- prior task code reviews
+- CMS Configuration Guide
+- Content Editor Report
+- unrelated repo browsing
+- governance file editing
+- running terminal commands
+
+### Expected Outputs
+
+- `harness/artifacts/code-review/TASKID-code-review.md`
+
+---
+
+## Fix and Deploy Stage Contract
+
+### Allowed Inputs
+
+- `harness/run-state.md`
+- active task file in `harness/tasks/`
+- approved active Code Review artifact (`harness/artifacts/code-review/TASKID-code-review.md`)
+- `harness/roles/fix-deploy-agent.md`
+- `harness/templates/fix-deploy-report-template.md`
+- `harness/standards/feature-workflow.md`
+- `harness/standards/task-lifecycle.md`
+- `harness/standards/run-id-standard.md`
+- `harness/standards/coding-standard.md`
+- the implementation source files identified in the Code Review artifact
+- the terminal commands allowed by the Fix and Deploy role (`npm run lint`, `npm run build`, `git status`, `git add`, `git commit`, `git push origin`)
+
+### Disallowed By Default
+
+- prior task fix and deploy reports
+- CMS Configuration Guide
+- Content Editor Report
+- broad repo browsing beyond the reviewed files
+- governance file editing
+- force-push or amend operations
+
+### Expected Outputs
+
+- `harness/artifacts/fix-deploy/TASKID-fix-deploy-report.md`
 
 ---
 

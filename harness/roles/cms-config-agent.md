@@ -55,6 +55,7 @@ Before producing output, this role should review:
 - `harness/standards/feature-workflow.md`
 - `harness/standards/task-lifecycle.md`
 - `harness/standards/run-id-standard.md`
+- `harness/standards/xmcloud-component-creation.md`
 - `harness/templates/cms-config-template.md`
 
 ---
@@ -83,17 +84,12 @@ Follow this process when producing a CMS Configuration Guide:
 
 7. Generate a stage-appropriate run ID for the CMS Configuration stage using the run-id standard.
 
-8. The guide must use the **Sitecore Accelerate Cookbook** as the authoritative source for how to create the rendering item and datasource template. Before writing section 1 of the guide:
-   - Attempt to fetch the recipe using the `web_fetch` tool:
-     `https://developers.sitecore.com/learn/accelerate/xm-cloud/implementation/developer-experience/creating-new-components`
-   - If `web_fetch` returns a 403 or fails, use the `web_search` tool to search for the recipe content — for example: `"Sitecore Accelerate Cookbook XM Cloud creating new components rendering datasource template"`. Extract the authoritative steps from the search result.
-   - Follow the steps as prescribed in the live recipe. Do not substitute hardcoded steps when the live content is available — the recipe may change over time.
-   - If neither `web_fetch` nor `web_search` yields the recipe content, **stop and escalate** — do not fall back to hardcoded steps. Record the failure clearly in your response so the orchestrator and human reviewer can resolve the access issue before re-running.
+8. The guide must use `harness/standards/xmcloud-component-creation.md` as the authoritative source for how to create the rendering item and datasource template. Read that standard before writing section 1 of the guide. Do not fetch the live URL — the standard already contains the extracted recipe steps.
    - The guide structure must reflect this:
-     - Section 1 must contain the component creation steps sourced from the Accelerate Cookbook recipe (or the fallback), as imperative instructions.
-     - Section 2 must contain field-update instructions for the items the recipe creates (datasource template fields and any rendering fields that need correction for this specific component).
-     - Any supporting templates the recipe does not create (e.g. a linked item template for a Multilist/Treelist field) must be documented as their own section. If they must exist before the recipe steps run, place them before section 1; if they can be created after, place them after section 2.
-     - Manual item creation (bypassing the recipe) must not appear as a primary path.
+     - Section 1 must contain the Clone Rendering steps from the standard as imperative instructions, adapted to the specific component name and module.
+     - Section 2 must contain the post-clone field-update instructions for the items the script creates (datasource template fields and any rendering fields that need correction for this specific component).
+     - Any supporting templates the script does not create (e.g. a linked item template for a Multilist/Treelist field) must be documented as their own section. If they must exist before the clone steps run, place them before section 1; if they can be created after, place them after section 2.
+     - Manual item creation (bypassing the Clone Rendering script) must not appear as a primary path.
 
 9. Section ordering must follow dependency order — items that are referenced by other items must appear first:
    - Data templates must come before the rendering definition (the rendering references the template by path).
@@ -265,13 +261,6 @@ When the Clone Rendering SPE script dialog is used, the datasource template and 
 
 ### Partial Design and Page Design creation — Pages UI only, never Content Editor
 Partial Designs and Page Designs must always be created through the **Sitecore Pages UI**, not through Content Editor insert options. Do not document Content Editor as an alternative or primary path for creating these items. The Pages UI is the only supported and reliable method for creating SXA design items in XM Cloud.
-
-### Accelerate Cookbook — pre-execution URL check
-Because the Accelerate Cookbook recipe URL (`https://developers.sitecore.com/learn/accelerate/xm-cloud/implementation/developer-experience/creating-new-components`) may be inaccessible at guide generation time, include the following instruction at the top of section 1 in the guide:
-
-> Before executing this section, visit the [Sitecore Accelerate Cookbook recipe](https://developers.sitecore.com/learn/accelerate/xm-cloud/implementation/developer-experience/creating-new-components) and verify whether the steps listed here match the current published version. If they differ, follow the published recipe over the steps in this guide.
-
-This makes the guide self-correcting if the recipe has been updated since the guide was generated.
 
 ---
 

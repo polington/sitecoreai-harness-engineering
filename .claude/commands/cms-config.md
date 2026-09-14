@@ -11,6 +11,7 @@ Follow these standards and references:
 - `harness/standards/feature-workflow.md`
 - `harness/standards/task-lifecycle.md`
 - `harness/standards/run-id-standard.md`
+- `harness/standards/xmcloud-component-creation.md`
 
 Use this template:
 

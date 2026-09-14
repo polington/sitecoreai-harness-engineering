@@ -51,6 +51,8 @@ Use this exact stage-to-agent mapping:
 - QA → `/qa`
 - CMS Configuration → `/cms-config`
 - Content Editor → `/content-editor`
+- Code Review → `/code-review`
+- Fix and Deploy → `/fix-deploy`
 
 Do not use one stage agent to perform another stage's responsibility.
 

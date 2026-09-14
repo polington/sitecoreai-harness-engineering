@@ -11,10 +11,10 @@ Task File: harness/tasks/T008-accordion-component.md
 ## Run
 
 Run Report ID: T008-run-report  
-Current Stage: Fix and Deploy  
+Current Stage: Complete  
 Current Run ID: RUN-2026-09-11-T008-FIX
 
-Overall Status: Active
+Overall Status: Complete — Approved 2026-09-11
 
 ---
 
@@ -30,7 +30,7 @@ Overall Status: Active
 | CMS Configuration | RUN-2026-08-21-T008-CMS | Complete | 2026-08-21 |
 | Content Editor | RUN-2026-08-21-T008-EDIT | Complete | 2026-08-21 |
 | Code Review | RUN-2026-09-11-T008-REVIEW | Complete | 2026-09-11 |
-| Fix and Deploy | RUN-2026-09-11-T008-FIX | In Progress | 2026-09-11 |
+| Fix and Deploy | RUN-2026-09-11-T008-FIX | Complete | 2026-09-11 |
 
 ---
 
@@ -98,8 +98,8 @@ Fix and Deploy Report: harness/artifacts/fix-deploy/T008-fix-deploy-report.md
 
 ## Stop / Pause State
 
-Stop Reason: None — workflow active  
-Next Expected Action: Fix and Deploy in progress (RUN-2026-09-11-T008-FIX)
+Stop Reason: N/A — task approved and complete  
+Next Expected Action: None — T008 is complete
 
 ---
 
@@ -112,6 +112,17 @@ Next Expected Action: Fix and Deploy in progress (RUN-2026-09-11-T008-FIX)
 - 3 execution deviations logged (all non-blocking): Clone Rendering SPE replaced with direct mutations; rendering field camelCase `componentName`; `__Final Renderings` retrieved via direct GraphQL field query
 - All 12 post-setup validation checks: ✅ Pass
 - QA issues carried forward: Issue 1 (aria-hidden keyboard focus gap, Medium), Issue 2 (text-lg vs text-xl, Low) — unchanged from QA stage
+
+---
+
+### Fix and Deploy — RUN-2026-09-11-T008-FIX
+
+- Artifact: `harness/artifacts/fix-deploy/T008-fix-deploy-report.md` — exists, non-empty
+- 3 fixes applied: inert attribute (Major Finding 1), text-xl font scale (Minor Finding 2), hover test (Minor Finding 3)
+- Validation: lint ✅ 0 errors; build ✅ pass (iteration 2 — `inert: true` boolean correction)
+- Commit: `1addcac` — `fix(T008): apply code review fixes — inert panel, text-xl title, hover test`
+- Push: `c6807aa..1addcac  main -> main` — success
+- Human reviewer approved 2026-09-11
 
 ---
 

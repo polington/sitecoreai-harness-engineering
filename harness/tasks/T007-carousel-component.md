@@ -1,6 +1,6 @@
 # Task T007 — Carousel Component
 
-Status: Active  
+Status: Complete  
 Backlog Item: B006  
 Created: 2026-08-20
 
